@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {CalendarService} from "../../services/calendar/calendar-service";
 
 /**
  * Generated class for the CalendarPage page.
@@ -15,11 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CalendarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public calendarService: CalendarService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarPage');
+    this.calendarService.fetchCalendar().subscribe((res)=>{
+      console.log(res);
+    });
   }
 
   toWinnerList(){

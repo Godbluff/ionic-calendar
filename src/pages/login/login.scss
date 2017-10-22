@@ -1,3 +1,331 @@
-login-page {
- background: url('assets/background.jpg');
+ion-content {
+  &.frontbg {
+    transform: translateZ(0);
+    width: 100%;
+    min-height: 100%;
+    background: url('../assets/images/chrismasbg2.jpg');
+    background-size:cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0px 50px 0px;
+  }
+  .snow-toggle{
+    position: absolute;
+    top: 310px;
+    left: 10px;
+    height: 50px;
+    width: 50px;
+    background: url(/app/assets/images/snow_reg.png);
+    background-size: 50px 50px;
+    cursor: pointer
+  }
+  .snow-toggle:hover{
+    background: url(/app/assets/images/snowhl.png);
+    background-size: 50px 50px;
+  }
+  .calendar-header {
+    width: 350px; padding: 10px 0px 0px 25px; height: 50px; line-height: 70px; text-align: left; font-size: 72px;;
+    /*background: url(/app/assets/images/bluetop.png);*/
+    position: absolute;
+    left: 0; top: 10px;
+    font-family: "Tangerine";
+    text-shadow: 1px 1px 2px black;
+  }
+  .calendar-border {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    /*background-image: url('/app/assets/images/red-top-border.png');*/
+    background-size: auto 50px;
+  }
+  .flag-container {
+    position: absolute;
+    top: 10px;right: 20px;
+    color: white !important;
+    z-index: 10;
+  }
+  .loginplate{
+    background: url(../assets/images/login.png);
+    background-size: 100%;
+    margin: 0 auto;
+    width: 400px;
+    padding: 70px 50px 80px 50px;
+    text-align: center;
+    margin-bottom:10px;
+  }
+  .ornament{
+    position: absolute; right: 0px;
+    top: 0px;
+    width: 30%
+  }
+
+  h3{
+    font-family: "Tangerine";
+    text-shadow: -2px -2px 0px white, 1px 1px 0px rgba(0,0,0,0.1);
+    font-size: 48px;
+    margin-bottom:5px;
+    color: black;
+    font-weight: bold;
+  }
+  .link a {
+    color: white;
+  }
+  input{
+    outline: none;
+  }
+  .front-input{
+    width: 100%;
+    background: rgba(0,24,0,0.7);
+    border: none;
+    color: white;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 1px 1px rgba(196,255,196,0.3), -1px -1px 1px rgba(0,12,0,0.3), inset 5px 5px 10px rgba(0,0,0,0.5);
+    margin-bottom: -5px;
+  }
+  .front-input:hover{
+    box-shadow: 1px 1px 1px rgba(196,255,196,0.3), -1px -1px 1px rgba(0,12,0,0.3), inset 5px 5px 10px rgba(0,0,0,0.5), 0px 0px 10px 5px rgba(196,255,196,0.6);
+  }.front-input:focus{
+     box-shadow: 1px 1px 1px rgba(196,255,196,0.3), -1px -1px 1px rgba(0,12,0,0.3), inset 5px 5px 10px rgba(0,0,0,0.5), 0px 0px 2px 2px rgba(196,255,196,0.6);
+     outline: none;
+   }
+
+  .input-header{
+    margin: 0 15%;
+    background: cornflowerblue;
+    text-shadow: 0px 0px 1px black;
+    text-align: center;
+    border-radius: 25px 25px 0px 0px;
+  }
+
+  .error-message{
+    margin: 0 auto;
+    max-width: 400px;
+    height: 40px;
+    line-height: 20px;
+    color: yellow;
+    text-shadow: 1px 1px 0px black;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .separator{
+    background: url('/app/assets/images/seprator.png') no-repeat center;
+    width: 150%;
+    height:25px;
+    background-size: contain;
+    margin-top: 10px;
+    margin-left: -25%;
+    margin-bottom: 20px;
+  }
+
+  .timer{
+    position: absolute;
+    top: 42px;
+    right: 50%;
+    margin-right: -18px;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    box-shadow: inset 0px 0px 0px 2px #000;
+    border-radius: 50%;
+  }
+  .timer:after, .timer:before{
+    position: absolute;
+    content:"";
+    background-color: #000;
+  }
+  .timer:after{
+    width: 16px;
+    height: 2px;
+    top: 17px;
+    left: 17px;
+    -webkit-transform-origin: 1px 1px;
+    -moz-transform-origin: 1px 1px;
+    transform-origin: 1px 1px;
+    -webkit-animation: minhand 2s linear infinite;
+    -moz-animation: minhand 2s linear infinite;
+    animation: minhand 2s linear infinite;
+  }
+
+  .timer:before{
+    width: 12px;
+    height: 2px;
+    top: 17px;
+    left: 17px;
+    -webkit-transform-origin: 1px 1px;
+    -moz-transform-origin: 1px 1px;
+    transform-origin: 1px 1px;
+    -webkit-animation: hrhand 8s linear infinite;
+    -moz-animation: hrhand 8s linear infinite;
+    animation: hrhand 8s linear infinite;
+  }
+
+  @-webkit-keyframes minhand{
+    0%{-webkit-transform:rotate(0deg)}
+    100%{-webkit-transform:rotate(360deg)}
+  }
+  @-moz-keyframes minhand{
+    0%{-moz-transform:rotate(0deg)}
+    100%{-moz-transform:rotate(360deg)}
+  }
+  @keyframes minhand{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+  }
+
+  @-webkit-keyframes hrhand{
+    0%{-webkit-transform:rotate(0deg)}
+    100%{-webkit-transform:rotate(360deg)}
+  }
+  @-moz-keyframes hrhand{
+    0%{-moz-transform:rotate(0deg)}
+    100%{-moz-transform:rotate(360deg)}
+  }
+  @keyframes hrhand{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+  }
+
+  .flag {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url('/app/assets/images/flags.png') no-repeat;
+    cursor: pointer;
+  }
+  .flag-container div{
+    display: inline-block;
+    margin-left: 10px;
+    z-index: 10;
+  }
+
+
+  .flag.flag-no {
+    background-position: -32px 0;
+  }
+
+  .flag.flag-gb {
+    background-position: 0 0;
+  }
+
+  .button-container{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .snow{
+    background: url('http://i.imgur.com/BiSmXaq.png'), url('http://i.imgur.com/XHuy0NJ.png'), url('http://i.imgur.com/okpRxJU.png'), url('/app/assets/images/chrismasbg2.jpg');
+    background-size: auto, auto, auto, cover;
+    color: white;
+    padding: 100px 0px 50px 0px;
+    -webkit-animation: snow 20s linear infinite;
+    -moz-animation: snow 20s linear infinite;
+    -ms-animation: snow 20s linear infinite;
+    animation: snow 20s linear infinite;
+  }
+  @-webkit-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px, center }
+    100% {
+      background-position: 300px 600px, 400px 400px, 500px 100px, center;
+    }
+  }
+  @-moz-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px, center }
+    100% {
+      background-position: 300px 600px, 400px 400px, 500px 1000px, center;
+    }
+  }
+  @-ms-keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px, center }
+    100% {
+      background-position: 300px 600px, 400px 400px, 500px 1000px, center;
+    }
+  }
+  @keyframes snow {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px, center }
+    100% {
+      background-position: 300px 600px, 400px 400px, 500px 1000px, center;
+    }
+  }
+
+  @media screen and (max-width:880px ){
+    .frontbg{
+      padding-top: 60px;
+    }
+    .ornament{
+      width: 40%;
+    }
+    .loginplate{
+      margin: 0;
+    }
+    .calendar-header{
+      width: 100%;
+      top: 0;
+      font-size: 50px;
+      line-height: 50px;
+    }
+    .button-container{
+      margin: 0;
+    }
+  }
+  @media screen and (max-width:685px ){
+    .ornament{
+      display: none;
+    }
+    .loginplate{
+      margin: 0 auto;
+    }
+    .frontbg{
+      padding-top: 80px;
+    }
+    .calendar-header{
+      text-align: center;
+      padding-left: 0;
+      line-height: 50px;
+      font-size: 50px;
+    }
+    .flag-container{
+      top: 70px;
+      right: 30px;
+    }
+    .button-container{
+      margin: 0 auto;
+    }
+  }
+  @media screen and (max-width: 420px){
+    .frontbg{
+      padding-top: 50px;
+    }
+    .loginplate{
+      width: 100%;
+      background-size: 100% 100%;
+    }
+    .calendar-header{
+      font-size: 40px;
+      padding: 0;
+    }
+    .button-container{
+      width: 90%;
+      margin-left: 5%;
+    }
+    h3{
+      font-size: 36px;
+    }
+    .flag-container{
+      top: 50px;
+      right: 15px;
+    }
+    .button{
+      font-size: 24px;
+    }
+    .separator{
+      width: 100%;
+      margin-left: 0;
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {CalendarService} from "../../services/calendar/calendar-service";
 
 @Component({
   selector: 'login-page',
@@ -7,8 +8,17 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController) {
+  companyName: string = '';
+  userName: string = '';
 
+  constructor(public navCtrl: NavController, public calendarService: CalendarService) {
+
+  }
+
+  getCalendar(){
+    this.calendarService.getCalendar('UDP', 'Kenneth').subscribe((res)=>{
+      this.navCtrl.push('MainPage', {token: res});
+    });
   }
 
   viewMain(){

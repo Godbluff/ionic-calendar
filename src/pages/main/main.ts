@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {CalendarService} from "../../services/calendar/calendar-service";
 
 /**
  * Generated class for the MainPage page.
@@ -15,11 +16,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MainPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  token: string = '';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public calendarService: CalendarService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
+    this.token = this.navParams.get('token');
+    console.log('token in main: ', this.token);
+    this.calendarService.fetchCalendar().subscribe((response)=>{
+      console.log('response from fetch: ', response);
+    })
   }
 
   toCalendarPage(){

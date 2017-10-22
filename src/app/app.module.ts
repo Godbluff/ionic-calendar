@@ -6,6 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
+import {CalendarService} from "../services/calendar/calendar-service";
+import {LanguageService} from "../services/language/language-service";
+import {Http, HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -14,6 +17,7 @@ import { LoginPage } from '../pages/login/login';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -24,6 +28,8 @@ import { LoginPage } from '../pages/login/login';
   providers: [
     StatusBar,
     SplashScreen,
+    CalendarService,
+    LanguageService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
