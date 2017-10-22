@@ -11,7 +11,7 @@ export class LoginPage {
 
   }
 
-  viewCalendar(){
+  viewMain(){
     this.navCtrl.push('MainPage');
   }
 }
