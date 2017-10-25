@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {CalendarService} from "../../services/calendar/calendar-service";
+import {Headers, Http, Response} from "@angular/http";
 
 /**
  * Generated class for the DoorComponent component.
@@ -32,7 +33,7 @@ export class DoorComponent {
 
   private loaderVisible: string = 'none';
 
-  constructor(public calendarService: CalendarService) {
+  constructor(public calendarService: CalendarService, public http: Http) {
     console.log('Hello DoorComponent Component');
     this.text = 'Hello World';
   }
@@ -46,5 +47,46 @@ export class DoorComponent {
 
   }
 
+  ngAfterViewInit(){
+    setTimeout(() => {
+      var el = document.querySelector("#" + this.containerId);
+      var top = el.getBoundingClientRect().top;
+      var left = el.getBoundingClientRect().left;
+      this.bgPos = `${-left-1}px ${-top-1}px`;
 
+      window.addEventListener('orientationchange', () => {
+        var el = document.querySelector("#" + this.containerId);
+        var top = el.getBoundingClientRect().top;
+        var left = el.getBoundingClientRect().left;
+        let scrollTop = window.scrollY;
+        this.bgPos = `${-left-1}px ${-top -scrollTop -1}px`;
+      });
+      window.addEventListener('resize', () => {
+        var el = document.querySelector("#" + this.containerId);
+        var top = el.getBoundingClientRect().top;
+        var left = el.getBoundingClientRect().left;
+        let scrollTop = window.scrollY;
+        let bigscreen =  screen.width;
+        if(bigscreen > 1280) {
+          this.bgPos = `${-left - 1}px ${-top -scrollTop - 1}px`;
+        }
+      });
+    },0);
+  }
+
+  toggleDoor(): void {
+      this.loaderVisible = 'block';
+      this.calendarService.openDoor(this.doorNumber).subscribe((door)=>{
+        door.prize ? this.prize = door.prize : '';
+        door.instructions ? this.instructions = door.instructions : '';
+        door.quote ? this.doorQuote = door.quote : '';
+        door.win ? this.userWin = door.win : false;
+        door.imageUrl ? this.imageUrl = door.imageUrl : this.imageUrl = 'http://www.stoltzimage.com/images/white-box-with-bow.jpg';
+        door.available ? this.doorAvailable = door.available : false;
+        door.open ? this.isOpened = door.available : false;
+        this.doorOpen = !this.doorOpen;
+        this.loaderVisible = 'none';
+      })
+
+  }
 }

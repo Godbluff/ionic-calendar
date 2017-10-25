@@ -49,10 +49,30 @@ export class CalendarService {
       });
   }
 
+  openDoor(doorNumber: number): Observable<any> {
+      let targetUrl = 'https://juleluka-api.herokuapp.com/calendar/doors/' + doorNumber + '/open';
+      let headers = new Headers({
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+        'X-Participant': this.userToken
+      });
+      return this.http.post(targetUrl, '', {headers: headers})
+        .map((res: Response)=>{
+          return res.json();
+        })
+        .catch((error: any) => {
+          console.log(error);
+          this.loaderVisible = 'none';
+        });
+  }
+
 
   private handleError(error: Response): Observable<any> {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
+
+
+
 
 }
