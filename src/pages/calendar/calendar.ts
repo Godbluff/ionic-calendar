@@ -16,6 +16,7 @@ import {CalendarService} from "../../services/calendar/calendar-service";
 })
 export class CalendarPage {
 
+  errorMessage: string = 'oopa';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public calendarService: CalendarService) {
   }

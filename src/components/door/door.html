@@ -1,0 +1,18 @@
+<div class="door-container" onClick="" id="{{containerId}}">
+  <div style="cursor: pointer;">
+    <div style="position:absolute; height: 100%; width: 100%; mix-blend-mode: color-dodge;overflow: hidden; cursor: pointer;">
+      <div class="prizelink">text</div>
+      <img class="image" src="/app/assets/images/chocolate.png" (click)="door.openModal(imageUrl, userWin, small, prize, doorNumber, instructions)"/>
+    </div>
+  </div>
+  <div class="cardshade-container">
+    <div class="{{doorOpen ? 'cardshade cardshade-open': 'cardshade'}}"></div>
+  </div>
+  <div (click)="toggleDoor()"  class="{{doorOpen ? 'card card-open' : 'card'}}" style="position: absolute;">
+    <div class="face front sparkly" id="front" [style.backgroundPosition]="bgPos">
+      {{doorNumber}}
+      <div class="timer" id="loader-{{doorNumber}}" [style.display]="loaderVisible"></div>
+    </div>
+    <div class="face back"><p>{{doorQuote}}</p></div>
+  </div>
+</div>

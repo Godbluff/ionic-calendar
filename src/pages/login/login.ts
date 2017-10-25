@@ -16,7 +16,7 @@ export class LoginPage {
   }
 
   getCalendar(){
-    this.calendarService.getCalendar('UDP', 'Kenneth').subscribe((res)=>{
+    this.calendarService.getCalendar(this.companyName, this.userName).subscribe((res)=>{
       this.navCtrl.push('MainPage', {token: res});
     });
   }

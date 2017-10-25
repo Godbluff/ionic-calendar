@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import {LanguageService} from "../language/language-service";
 
 @Injectable()
@@ -40,8 +41,8 @@ export class CalendarService {
     let headers: any = new Headers({'Accept': 'application/json', 'X-Participant' : this.userToken});
     return this.http.get(this.calendarUrl, {headers: headers})
       .map((res)=>{
-        console.log(res.json());
-        return res.json();
+        this.userCalendar = res.json();
+        console.log(this.userCalendar);
       })
       .catch((err)=>{
         this.handleError(err);
