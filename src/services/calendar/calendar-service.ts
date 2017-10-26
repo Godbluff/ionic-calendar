@@ -10,7 +10,9 @@ import {LanguageService} from "../language/language-service";
 @Injectable()
 export class CalendarService {
   calendarUrl: string = 'https://juleluka-api.herokuapp.com/calendar';
-  userCalendar: any = {};
+  userCalendar: any = {
+    doorSequence: []
+  };
   userToken: string = '';
   loaderVisible: string = 'none';
   wantNewCalendar: boolean = true;
@@ -38,6 +40,9 @@ export class CalendarService {
   }
 
   fetchCalendar(): Observable<any>{
+    let retrievedToken = localStorage.getItem('CCParticipant');
+    let parsedToken = JSON.parse(retrievedToken);
+    this.userToken = parsedToken.token;
     let headers: any = new Headers({'Accept': 'application/json', 'X-Participant' : this.userToken});
     return this.http.get(this.calendarUrl, {headers: headers})
       .map((res)=>{
