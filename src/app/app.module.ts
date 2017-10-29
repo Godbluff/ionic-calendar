@@ -1,14 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-
-import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
+import {BrowserModule} from "@angular/platform-browser";
+import {ErrorHandler, NgModule} from "@angular/core";
+import {IonicApp, IonicErrorHandler, IonicModule} from "ionic-angular";
+import {SplashScreen} from "@ionic-native/splash-screen";
+import {StatusBar} from "@ionic-native/status-bar";
+import {MyApp} from "./app.component";
+import {LoginPage} from "../pages/login/login";
 import {CalendarService} from "../services/calendar/calendar-service";
 import {LanguageService} from "../services/language/language-service";
-import {Http, HttpModule} from "@angular/http";
+import {HttpModule} from "@angular/http";
+import {ModalService} from "../services/modal/modal-service";
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import {Http, HttpModule} from "@angular/http";
     SplashScreen,
     CalendarService,
     LanguageService,
+    ModalService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,5 +1,7 @@
 <ion-content>
-  <div class="christmasbg">
+
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="!isLoading" class="christmasbg">
 
     <div class="calendar-header">Julekalender for {{calendarService.userCalendar.companyName}}</div>
     <div class="calendar-border"></div>

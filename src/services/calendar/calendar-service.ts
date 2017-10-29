@@ -6,6 +6,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {LanguageService} from "../language/language-service";
+import {ModalService} from "../modal/modal-service";
 
 @Injectable()
 export class CalendarService {
@@ -19,7 +20,7 @@ export class CalendarService {
   errorMessage: string = '';
   todayNumber: number = 0;
 
-  constructor(private http: Http, public languageService: LanguageService,) {
+  constructor(private http: Http, public languageService: LanguageService, public modalService: ModalService) {
   }
 
   getCalendar(companyName: string, participantName: string): Observable<any> {
@@ -34,7 +35,7 @@ export class CalendarService {
         localStorage.setItem('CCParticipant', JSON.stringify({token: this.userToken}));
         return this.userToken;
       })
-      .catch((err)=>{
+      .catch((err: any)=> {
         this.handleError(err);
       });
   }
@@ -63,7 +64,9 @@ export class CalendarService {
       });
       return this.http.post(targetUrl, '', {headers: headers})
         .map((res: Response)=>{
+          this.modalService.presentDoorModal();
           return res.json();
+
         })
         .catch((error: any) => {
           console.log(error);

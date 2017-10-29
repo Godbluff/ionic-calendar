@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, NgZone} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {CalendarService} from "../../services/calendar/calendar-service";
 import {LanguageService} from "../../services/language/language-service";
@@ -19,20 +19,25 @@ export class CalendarPage {
 
   errorMessage: string = 'oopa';
   retrievedToken;
+  isLoading = true;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public calendarService: CalendarService,
               private languageService: LanguageService) {
+
   }
 
   ionViewDidLoad() {
-    this.calendarService.fetchCalendar();
     console.log('ionViewDidLoad CalendarPage');
+    this.calendarService.fetchCalendar().subscribe((res)=> {
+      this.isLoading = !this.isLoading;
+
+    });
   }
 
-  ionViewCanEnter(){
-    this.calendarService.fetchCalendar().subscribe((res)=>{
+  ionViewCanEnter() {
+    this.calendarService.fetchCalendar().subscribe((res)=> {
       return this.calendarService.userCalendar.length > 0;
     });
 
