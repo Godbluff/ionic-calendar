@@ -73,11 +73,6 @@ export class CalendarService {
         });
   }
 
-  checkPrize(){
-    this.modalService.presentDoorModal();
-  }
-
-
   private handleError(error): Observable<any> {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');

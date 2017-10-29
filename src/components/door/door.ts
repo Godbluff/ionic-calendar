@@ -32,6 +32,8 @@ export class DoorComponent {
   screenHeight: number = null;
   screenWidth: number = null;
 
+  doorData: any = {};
+
   private loaderVisible: string = 'none';
 
   constructor(public calendarService: CalendarService, public http: Http, private modalService: ModalService) {
@@ -78,6 +80,7 @@ export class DoorComponent {
   toggleDoor(): void {
       this.loaderVisible = 'block';
       this.calendarService.openDoor(this.doorNumber).subscribe((door)=>{
+        this.doorData = door;
         door.prize ? this.prize = door.prize : '';
         door.instructions ? this.instructions = door.instructions : '';
         door.quote ? this.doorQuote = door.quote : '';
@@ -92,6 +95,7 @@ export class DoorComponent {
   }
 
   openModal(){
-    this.modalService.presentDoorModal();
+    this.modalService.presentDoorModal(this.doorData);
+    console.log('doordata in door: ', this.doorData)
   }
 }

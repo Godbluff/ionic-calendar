@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {ViewController} from "ionic-angular";
+import {Component} from '@angular/core';
+import {ViewController, NavController, NavParams} from "ionic-angular";
 
 /**
  * Generated class for the ModalsComponent component.
@@ -14,13 +14,19 @@ import {ViewController} from "ionic-angular";
 export class ModalsComponent {
 
   text: string;
+  prizeData: any = {};
 
-  constructor(public viewCtrl: ViewController) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
     console.log('Hello ModalsComponent Component');
     this.text = 'Hello World';
   }
 
-  closeModal(){
+  ngOnInit() {
+    this.prizeData = this.navParams.get('data');
+    console.log(this.prizeData);
+  }
+
+  closeModal() {
     this.viewCtrl.dismiss();
   }
 

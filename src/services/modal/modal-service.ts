@@ -9,8 +9,8 @@ export class ModalService {
 
   }
 
-  presentDoorModal() {
-    const profileModal = this.modal.create(ModalsComponent, { userId: 8675309 });
+  presentDoorModal(data) {
+    const profileModal = this.modal.create(ModalsComponent,{ data: data});
     profileModal.present();
   }
 
