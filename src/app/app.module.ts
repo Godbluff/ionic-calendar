@@ -9,21 +9,24 @@ import {CalendarService} from "../services/calendar/calendar-service";
 import {LanguageService} from "../services/language/language-service";
 import {HttpModule} from "@angular/http";
 import {ModalService} from "../services/modal/modal-service";
+import {ModalsComponent} from "../components/modals/modals";
 
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    LoginPage,
+    ModalsComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
+    ModalsComponent
   ],
   providers: [
     StatusBar,

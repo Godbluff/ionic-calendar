@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ViewController} from "ionic-angular";
 
 /**
  * Generated class for the ModalsComponent component.
@@ -14,9 +15,13 @@ export class ModalsComponent {
 
   text: string;
 
-  constructor() {
+  constructor(public viewCtrl: ViewController) {
     console.log('Hello ModalsComponent Component');
     this.text = 'Hello World';
+  }
+
+  closeModal(){
+    this.viewCtrl.dismiss();
   }
 
 }

@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {CalendarService} from "../../services/calendar/calendar-service";
 import {Headers, Http, Response} from "@angular/http";
+import {ModalService} from "../../services/modal/modal-service";
 
 /**
  * Generated class for the DoorComponent component.
@@ -33,7 +34,7 @@ export class DoorComponent {
 
   private loaderVisible: string = 'none';
 
-  constructor(public calendarService: CalendarService, public http: Http) {
+  constructor(public calendarService: CalendarService, public http: Http, private modalService: ModalService) {
     console.log('Hello DoorComponent Component');
     this.text = 'Hello World';
   }
@@ -88,5 +89,9 @@ export class DoorComponent {
         this.loaderVisible = 'none';
       })
 
+  }
+
+  openModal(){
+    this.modalService.presentDoorModal();
   }
 }

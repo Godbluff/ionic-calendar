@@ -35,7 +35,7 @@ export class CalendarService {
         localStorage.setItem('CCParticipant', JSON.stringify({token: this.userToken}));
         return this.userToken;
       })
-      .catch((err: any)=> {
+      .catch((err)=> {
         this.handleError(err);
       });
   }
@@ -64,18 +64,21 @@ export class CalendarService {
       });
       return this.http.post(targetUrl, '', {headers: headers})
         .map((res: Response)=>{
-          this.modalService.presentDoorModal();
           return res.json();
 
         })
-        .catch((error: any) => {
-          console.log(error);
+        .catch((error) => {
+          this.handleError(error);
           this.loaderVisible = 'none';
         });
   }
 
+  checkPrize(){
+    this.modalService.presentDoorModal();
+  }
 
-  private handleError(error: Response): Observable<any> {
+
+  private handleError(error): Observable<any> {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }

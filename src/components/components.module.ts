@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { DoorComponent } from './door/door';
 import { ModalsComponent } from './modals/modals';
 @NgModule({
-	declarations: [DoorComponent,
-    ModalsComponent],
+	declarations: [DoorComponent],
 	imports: [],
-	exports: [DoorComponent,
-    ModalsComponent]
+	exports: [DoorComponent]
 })
 export class ComponentsModule {}
