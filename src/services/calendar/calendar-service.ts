@@ -63,7 +63,7 @@ export class CalendarService {
         'X-Participant': this.userToken
       });
       return this.http.post(targetUrl, '', {headers: headers})
-        .map((res: Response)=>{
+        .map((res)=>{
           return res.json();
 
         })

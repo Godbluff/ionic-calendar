@@ -1,8 +1,10 @@
 <!-- Generated template for the ModalsComponent component -->
-<div (click)="closeModal()">
-  {{prizeData.quote}}
-  <img src="{{prizeData.imageUrl}}" style="height: 100px; float: right;"/>
-  <p class="top-header">{{prizeData.outcomeText}}</p>
+<div style="display: flex; flex-direction: column; text-align: center; align-content: center">
+  <p>{{prizeData.number}}. desember</p>
+  <p class="top-header">{{outcomeText}}</p>
   <p class="sub-header">Dagens premie {{win ? 'er:' : 'var:'}}</p>
-  <p>{{prizeData.prizeText}}</p>
+  <img src="{{prizeData.imageUrl}}" style="max-height: 150px; object-fit: scale-down;"/>
+  <p>{{prizeData.prize}}</p>
+  <p>{{prizeData.instructions}}</p>
+  <button (click)="closeModal()" style="height: 40px; line-height: 40px; font-size: 2rem;">Lukk</button>
 </div>

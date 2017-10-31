@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {CalendarService} from "../../services/calendar/calendar-service";
 import {Headers, Http, Response} from "@angular/http";
 import {ModalService} from "../../services/modal/modal-service";
+import {Prize} from "../../entities/prize.entity";
 
 /**
  * Generated class for the DoorComponent component.
@@ -32,7 +33,7 @@ export class DoorComponent {
   screenHeight: number = null;
   screenWidth: number = null;
 
-  doorData: any = {};
+  doorData: Prize;
 
   private loaderVisible: string = 'none';
 

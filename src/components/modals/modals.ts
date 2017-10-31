@@ -15,6 +15,7 @@ export class ModalsComponent {
 
   text: string;
   prizeData: any = {};
+  outcomeText: string = '';
 
   constructor(public viewCtrl: ViewController, public navParams: NavParams) {
     console.log('Hello ModalsComponent Component');
@@ -23,6 +24,7 @@ export class ModalsComponent {
 
   ngOnInit() {
     this.prizeData = this.navParams.get('data');
+    this.prizeData.win ? this.outcomeText =  'Gratulerer! Du har vunnet!' : this.outcomeText = 'Dessverre. Du vant ikke i dag';
     console.log(this.prizeData);
   }
 
