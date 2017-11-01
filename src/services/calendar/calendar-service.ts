@@ -29,13 +29,13 @@ export class CalendarService {
     let headers = new Headers({'Content-type': 'application/json'});
     let targetUrl: string = 'https://juleluka-api.herokuapp.com/calendar/participant/lookup?companyName=' + companyName + '&participantName=' + participantName;
     return this.http.get(targetUrl, {headers: headers})
-      .map((res) => {
+      .map((res: Response) => {
         console.log(res.json().token);
         this.userToken = res.json().token;
         localStorage.setItem('CCParticipant', JSON.stringify({token: this.userToken}));
         return this.userToken;
       })
-      .catch((err)=> {
+      .catch((err: Response)=> {
         this.handleError(err);
       });
   }
@@ -46,11 +46,11 @@ export class CalendarService {
     this.userToken = parsedToken.token;
     let headers: any = new Headers({'Accept': 'application/json', 'X-Participant' : this.userToken});
     return this.http.get(this.calendarUrl, {headers: headers})
-      .map((res)=>{
+      .map((res: Response)=>{
         this.userCalendar = res.json();
         console.log(this.userCalendar);
       })
-      .catch((err)=>{
+      .catch((err: Response)=>{
         this.handleError(err);
       });
   }
@@ -63,11 +63,11 @@ export class CalendarService {
         'X-Participant': this.userToken
       });
       return this.http.post(targetUrl, '', {headers: headers})
-        .map((res)=>{
+        .map((res: Response)=>{
           return res.json();
 
         })
-        .catch((error) => {
+        .catch((error: Response) => {
           this.handleError(error);
           this.loaderVisible = 'none';
         });
