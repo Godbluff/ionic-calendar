@@ -12,18 +12,19 @@
   </p>
 
   <div class="loginplate" style="position: relative;">
-    <h3>xxx</h3>
-    <div class="input-header">xxx</div>
+    <h3>{{languageService.texts.loginHead[languageService.setLanguage]}}</h3>
+    <div class="input-header">Brukernavn</div>
     <input class="front-input" placeholder="" [(ngModel)]="companyName"/>
     <br/><br/>
-    <div class="input-header">xxx</div>
+    <div class="input-header">Passord</div>
     <input class="front-input"  placeholder="" [(ngModel)]="userName"/>
-    <div class="button" style="width: 80%; margin-top:20px; position: relative;">
-      <div class="timer"></div>
+    <div class="button" style="width: 80%; margin-top:20px; position: relative;" (click)="getCalendar()">
+      {{languageService.texts.openCal[languageService.setLanguage]}}
     </div>
-  </div>
+    <div class="timer" [class.visible]="isLoading"></div>
 
-  <button (click)="getCalendar()">Get Calendar</button>
+  </div>
+  <div class="error-message">{{calendarService.errorMessage}}</div>
   <button (click)="viewMain()">To Main Page</button>
 
 

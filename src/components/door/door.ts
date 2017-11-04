@@ -15,12 +15,12 @@ import {Prize} from "../../entities/prize.entity";
   templateUrl: 'door.html'
 })
 export class DoorComponent {
-
-  text: string;
   @Input('doorNumber') doorNumber: number;
   @Input() isOpened: boolean = false;
-  doorQuote: string;
   @Input() containerId: string;
+
+  text: string;
+  doorQuote: string;
   prize: string;
   userWin: boolean = false;
   instructions: string = '';
@@ -48,39 +48,42 @@ export class DoorComponent {
 
   ngOnChanges() {
     console.log('got new inputs', this.loaderVisible);
-
   }
 
   ngAfterViewInit(){
     setTimeout(() => {
+      this.adjustDoors();
+    },0);
+  }
+
+  adjustDoors(){
+    var el = document.querySelector("#" + this.containerId);
+    var top = el.getBoundingClientRect().top;
+    var left = el.getBoundingClientRect().left;
+    this.bgPos = `${-left-1}px ${-top-1}px`;
+
+    window.addEventListener('orientationchange', () => {
       var el = document.querySelector("#" + this.containerId);
       var top = el.getBoundingClientRect().top;
       var left = el.getBoundingClientRect().left;
-      this.bgPos = `${-left-1}px ${-top-1}px`;
-
-      window.addEventListener('orientationchange', () => {
-        var el = document.querySelector("#" + this.containerId);
-        var top = el.getBoundingClientRect().top;
-        var left = el.getBoundingClientRect().left;
-        let scrollTop = window.scrollY;
-        this.bgPos = `${-left-1}px ${-top -scrollTop -1}px`;
-      });
-      window.addEventListener('resize', () => {
-        var el = document.querySelector("#" + this.containerId);
-        var top = el.getBoundingClientRect().top;
-        var left = el.getBoundingClientRect().left;
-        let scrollTop = window.scrollY;
-        let bigscreen =  screen.width;
-        if(bigscreen > 1280) {
-          this.bgPos = `${-left - 1}px ${-top -scrollTop - 1}px`;
-        }
-      });
-    },0);
+      let scrollTop = window.scrollY;
+      this.bgPos = `${-left-1}px ${-top -scrollTop -1}px`;
+    });
+    window.addEventListener('resize', () => {
+      var el = document.querySelector("#" + this.containerId);
+      var top = el.getBoundingClientRect().top;
+      var left = el.getBoundingClientRect().left;
+      let scrollTop = window.scrollY;
+      let bigscreen =  screen.width;
+      if(bigscreen > 1280) {
+        this.bgPos = `${-left - 1}px ${-top -scrollTop - 1}px`;
+      }
+    });
   }
 
   toggleDoor(): void {
       this.loaderVisible = 'block';
-      this.calendarService.openDoor(this.doorNumber).subscribe((door)=>{
+      this.calendarService.openDoor(this.doorNumber).subscribe((door: Prize)=>{
         this.doorData = door;
         door.prize ? this.prize = door.prize : '';
         door.instructions ? this.instructions = door.instructions : '';

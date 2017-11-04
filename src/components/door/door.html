@@ -6,9 +6,9 @@
     </div>
   </div>
   <div class="cardshade-container">
-    <div class="{{doorOpen ? 'cardshade cardshade-open': 'cardshade'}}"></div>
+    <div class="cardshade" [class.cardshade-open]="doorOpen"></div>
   </div>
-  <div (click)="toggleDoor()"  class="{{doorOpen ? 'card card-open' : 'card'}}" style="position: absolute;">
+  <div (click)="toggleDoor()"  class="card" [class.card-open]="doorOpen">
     <div class="face front sparkly" id="front" [style.backgroundPosition]="bgPos">
       {{doorNumber}}
       <div class="timer" id="loader-{{doorNumber}}" [style.display]="loaderVisible"></div>

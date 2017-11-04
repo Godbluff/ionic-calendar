@@ -62,7 +62,7 @@ ion-content {
   }
 
   h3{
-    font-family: "Tangerine";
+    font-family: 'Tangerine';
     text-shadow: -2px -2px 0px white, 1px 1px 0px rgba(0,0,0,0.1);
     font-size: 48px;
     margin-bottom:5px;
@@ -123,8 +123,9 @@ ion-content {
   }
 
   .timer{
+    display: none;
     position: absolute;
-    top: 42px;
+    bottom: 36px;
     right: 50%;
     margin-right: -18px;
     width: 36px;
@@ -132,7 +133,12 @@ ion-content {
     background-color: transparent;
     box-shadow: inset 0px 0px 0px 2px #000;
     border-radius: 50%;
+
+    &.visible{
+      display: block;
+    }
   }
+
   .timer:after, .timer:before{
     position: absolute;
     content:"";

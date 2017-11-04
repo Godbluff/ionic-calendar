@@ -16,17 +16,16 @@ import {CalendarService} from "../../services/calendar/calendar-service";
 })
 export class MainPage {
 
+  isLoading: boolean = true;
   token: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public calendarService: CalendarService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MainPage');
     this.token = this.navParams.get('token');
-    console.log('token in main: ', this.token);
-    this.calendarService.fetchCalendar().subscribe((response)=>{
-      console.log('response from fetch: ', response);
+    this.calendarService.fetchCalendar().subscribe(()=>{
+      this.isLoading = false;
     })
   }
 

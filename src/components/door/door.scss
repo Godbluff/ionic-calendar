@@ -54,7 +54,7 @@ door {
   .card {
     width: 118px;
     height: 118px;
-    position: relative;
+    position: absolute;
     -webkit-transition: transform 500ms ease-in-out;
     transition: transform 500ms ease-in-out;
     -webkit-transform-style: preserve-3d;
@@ -171,6 +171,7 @@ door {
   }
 
   .timer{
+    display: block;
     position: absolute;
     top: 80px;
     left: 48px;

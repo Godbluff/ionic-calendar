@@ -17,9 +17,7 @@ import {LanguageService} from "../../services/language/language-service";
 })
 export class CalendarPage {
 
-  errorMessage: string = 'oopa';
-  retrievedToken;
-  isLoading = true;
+  isLoading: boolean = true;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -28,16 +26,9 @@ export class CalendarPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CalendarPage');
-    this.calendarService.fetchCalendar().subscribe((res)=> {
-      this.isLoading = !this.isLoading;
-
-    });
-  }
-
   ionViewCanEnter() {
-    this.calendarService.fetchCalendar().subscribe((res)=> {
+    this.calendarService.fetchCalendar().subscribe(()=> {
+      this.isLoading = false;
       return this.calendarService.userCalendar.length > 0;
     });
 
