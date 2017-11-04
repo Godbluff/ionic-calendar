@@ -1,9 +1,26 @@
 modals {
   margin: 10vh 10vw;
 
-  div{
+  .modal-header{
+    background: lightgrey;
+    font-size: 2rem;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .modal-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
     max-height: 80vh;
     width: 80vw;
     background: white;
+
+    .modal-content-container{
+      margin: 0 2rem 2rem;
+    }
+
   }
+
 }

@@ -40,3 +40,4 @@ export class LoginPage {
 // TODO: Bypass Main page for single-calendar users
 // TODO: Implement editor in app
 // TODO: Set Up Firebase project for Calendar
+// TODO: Add settings for prizes: Number of winners per day (universal value and individual door values). Number of consecutive wins by same user. Max number of wins by same user.

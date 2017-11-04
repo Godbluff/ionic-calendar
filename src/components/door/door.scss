@@ -3,7 +3,7 @@ door {
     position: relative;
     float: left;
     top: 100px;
-    left: 0px;
+    left: 0;
     height: 120px;
     width: 120px;
     text-align: center;
@@ -12,9 +12,9 @@ door {
     background: #47200d;
     -webkit-background-clip: padding-box;
     border: 1px dotted rgba(25,255,255,0.2);
-    -webkit-box-shadow: inset 0px 0px 20px black;
-    -moz-box-shadow: inset 0px 0px 20px black;
-    box-shadow: inset 0px 0px 20px black;
+    -webkit-box-shadow: inset 0 0 20px black;
+    -moz-box-shadow: inset 0 0 20px black;
+    box-shadow: inset 0 0 20px black;
     margin: 10px 10px;
   }
   .cardshade-container{
@@ -35,9 +35,9 @@ door {
     transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    transform-origin: 0% 0%;
+    transform-origin: 0 0;
     background: rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 00px black;
+    box-shadow: 0 0 00px black;
     pointer-events: none;
 
   }
@@ -45,7 +45,7 @@ door {
   .cardshade-open{
     -webkit-transform: rotateY(-150deg);
     transform: rotateY(-150deg);
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0 0 10px black;
     width: 100px;
     -webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
     transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
@@ -59,7 +59,7 @@ door {
     transition: transform 500ms ease-in-out;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    transform-origin: 0% 0%;
+    transform-origin: 0 0;
 
   }
 
@@ -80,15 +80,15 @@ door {
     z-index: 2;
     font-size: 36px;
     color: white;
-    text-shadow: 0px 0px 2px black;
-    font-family: 'Henny Penny';
+    text-shadow: 0 0 2px black;
+    font-family: 'Henny Penny', Arial, sans-serif;
     overflow: hidden;
     cursor: pointer;
   }
   .front::after{
     content: '';
     position: absolute;
-    top: 0px;
+    top: 0;
     left: -75px;
     height: 100%; width: 50px;
     background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 1%, rgba(255,255,255,1) 3%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
@@ -109,15 +109,14 @@ door {
     color: black;
     font-size: 11px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .back p{
     position: relative;
-    top: 50%;
-    line-height: 1.5em;
+    line-height: 1.2em;
     padding: 10px;
-    -webkit-transform: perspective(1px) translateY(-50%);
-    -ms-transform: perspective(1px) translateY(-50%);
-    transform: perspective(1px) translateY(-50%);
   }
 
   .card-open {
@@ -131,7 +130,7 @@ door {
   .card .front.opened::after{
     content: '';
     position: absolute;
-    top: 0px; left: 0px;
+    top: 0; left: 0;
     height: 100%; width: 100%;
     background-size: cover;
     mix-blend-mode: multiply;
@@ -144,18 +143,18 @@ door {
     width: 100%;
     text-align: center;
     pointer-events: none;
-    font-family: Tangerine;
+    font-family: 'Tangerine', Arial, sans-serif;
     font-size: 30px;
     opacity: 0.85;
-    text-shadow: 1px 1px 0px black;
+    text-shadow: 1px 1px 0 black;
   }
 
   .image{
     position: absolute;
     height: 100%;
     width: 100%;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     transition: all 3s ease-in-out;
     cursor: pointer;
     opacity: 1;
@@ -178,7 +177,7 @@ door {
     width: 24px;
     height: 24px;
     background-color: transparent;
-    box-shadow: inset 0px 0px 0px 2px #fff;
+    box-shadow: inset 0 0 0 2px #fff;
     border-radius: 50%;
   }
   .timer:after, .timer:before{
@@ -355,7 +354,6 @@ door {
     }
     .back p {
       transform: rotate(180deg);
-      transform-origin: 50% 25%;
     }
 
   }
