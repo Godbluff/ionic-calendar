@@ -37,7 +37,7 @@ door {
     transform-style: preserve-3d;
     transform-origin: 0 0;
     background: rgba(0,0,0,0.5);
-    box-shadow: 0 0 00px black;
+    box-shadow: 0 0 0 0 black;
     pointer-events: none;
 
   }
@@ -75,12 +75,12 @@ door {
   }
 
   .front {
-    background: url(../../assets/images/calendar-bg.jpg) no-repeat;
+    background: url('../assets/images/calendar-bg.jpg') no-repeat;
     background-size: 1000px;
     z-index: 2;
     font-size: 36px;
     color: white;
-    text-shadow: 0 0 2px black;
+    text-shadow: 0 0px 2px black;
     font-family: 'Henny Penny', Arial, sans-serif;
     overflow: hidden;
     cursor: pointer;

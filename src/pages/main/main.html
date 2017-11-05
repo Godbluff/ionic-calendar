@@ -17,7 +17,7 @@
   <h2>Tilgjengelige kalendere</h2>
   <ion-spinner *ngIf="isLoading" name="bubbles"></ion-spinner>
   <ion-card *ngIf="!isLoading" (click)="toCalendarPage()">
-    <img src="../../assets/images/calendar-bg.jpg"/>
+    <img src="assets/images/calendar-bg.jpg"/>
     <div class="card-title">
       <div class="header">{{calendarService.userCalendar.companyName}}</div>
       <div class="sub-title">21 Memebers</div>

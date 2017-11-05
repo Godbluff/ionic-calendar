@@ -45,7 +45,7 @@ export class CalendarService {
 
   }
 
-  fetchCalendar(): Observable<void> {
+  fetchCalendar(): Observable<boolean> {
     console.log('fetching calendar...');
     let retrievedToken = localStorage.getItem('CCParticipant');
     let parsedToken = JSON.parse(retrievedToken);
@@ -56,9 +56,12 @@ export class CalendarService {
         console.log('calendar loaded.');
         this.userCalendar = res.json();
         console.log(this.userCalendar);
+        return true;
+
       })
-      .catch((err: Response)=> {
-        this.handleError(err);
+      .catch((error: Response)=> {
+        this.handleError(error);
+        return Observable.of(false);
       });
   }
 
@@ -77,12 +80,12 @@ export class CalendarService {
 
       })
       .catch((error: Response) => {
-        this.handleError(error);
         this.loaderVisible = 'none';
+        return this.handleError(error);
       });
   }
 
-  private handleError(error): Observable<any> {
+  private handleError(error: Response): Observable<any> {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }

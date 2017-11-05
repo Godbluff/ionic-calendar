@@ -13,7 +13,7 @@ page-calendar {
     left: 0;
     height: 50px;
     width: 100%;
-    background-image: url(../../assets/images/blue-top-border.png);
+    background-image: url('../assets/images/blue-top-border.png');
     background-size: auto 50px;
   }
   .link {
@@ -45,7 +45,7 @@ page-calendar {
   .christmasbg {
     width: 100%;
     height: 1080px;
-    background: url(../../assets/images/calendar-bg.jpg) no-repeat;
+    background: url('../assets/images/calendar-bg.jpg') no-repeat;
     background-size: cover;
     color: white;
     padding-left: 100px;
