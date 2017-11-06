@@ -15,7 +15,9 @@
 <ion-content class="main-page" padding>
 
   <h2>Tilgjengelige kalendere</h2>
+
   <ion-spinner *ngIf="isLoading" name="bubbles"></ion-spinner>
+
   <ion-card *ngIf="!isLoading" (click)="toCalendarPage()">
     <img src="assets/images/calendar-bg.jpg"/>
     <div class="card-title">

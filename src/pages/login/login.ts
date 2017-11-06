@@ -33,6 +33,14 @@ export class LoginPage {
   viewMain(){
     this.navCtrl.push('MainPage');
   }
+
+  createNewAdmin(){
+    this.navCtrl.push('CalendarCreatePage');
+  }
+
+  adminLogin(){
+    this.navCtrl.push('CalendarAdministratePage');
+  }
 }
 
 // TODO: Clean up presentation on login and calendar screens. Images and stylings. Door sizes.
