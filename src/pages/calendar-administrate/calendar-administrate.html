@@ -1,0 +1,34 @@
+<!--
+  Generated template for the CalendarAdministratePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Administrate Calendar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+Add login for navigation to calendar list page.
+
+  <ion-list>
+    <ion-list-header>Administrator Login</ion-list-header>
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input [(ngModel)]="editor.calendarAdmin.username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="editor.calendarAdmin.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button round (click)="adminCalendars()">Get Calendars</button>
+    </ion-item>
+  </ion-list>
+  <button (click)="goToCalendarList()">Open Calendar List</button>
+</ion-content>

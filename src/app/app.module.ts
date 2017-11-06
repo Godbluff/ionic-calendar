@@ -10,6 +10,7 @@ import {LanguageService} from "../services/language/language-service";
 import {HttpModule} from "@angular/http";
 import {ModalService} from "../services/modal/modal-service";
 import {ModalsComponent} from "../components/modals/modals";
+import { EditorProvider } from '../providers/editor/editor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {ModalsComponent} from "../components/modals/modals";
     CalendarService,
     LanguageService,
     ModalService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    EditorProvider
   ]
 })
 export class AppModule {}
