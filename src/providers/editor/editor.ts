@@ -14,8 +14,6 @@ export class EditorProvider {
 
   private calendarUrl: string = 'https://juleluka-api.herokuapp.com/edit/calendar';
 
-  authToken: '';
-
   calendarAdmin: any = {
     username: '',
     password: ''
@@ -27,10 +25,12 @@ export class EditorProvider {
     passwordVerify: '',
   };
 
+  authToken: string = '';
+
   calendars: any = {};
 
   constructor(public http: Http) {
-    console.log('Hello EditorProvider Provider');
+    console.log('Hello EditorProvider Provider', localStorage.getItem('CCUser'));
   }
 
   editCalendar(): Observable<void> {
@@ -44,6 +44,7 @@ export class EditorProvider {
       .map((res: Response)=> {
         this.authToken = res.json().authToken;
         localStorage.setItem('CCAdmin', JSON.stringify({token: this.authToken}));
+        this.checkToken();
         return this.getEditableCalendar().subscribe(()=>{
           console.log('finished it');
         });
@@ -51,6 +52,12 @@ export class EditorProvider {
       .catch((error: Response)=> {
         return Observable.throw(error.json().error || 'Server error');
       });
+  }
+
+  checkToken(){
+    let retrievedToken = localStorage.getItem('CCAdmin');
+    let parsedToken = JSON.parse(retrievedToken);
+    console.log('tokens identical? :', this.authToken === parsedToken.token);
   }
 
 
@@ -70,6 +77,34 @@ export class EditorProvider {
       .catch((error: Response)=>{
         return Observable.throw(error.json().error || 'Server error');
       });
+  }
+
+  insertParticipant(participantName: string){
+    let token = this.authToken;
+    let body = {"name": participantName};
+    let targetUrl = this.calendarUrl + '/participants';
+    let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': this.authToken});
+    this.http.post(targetUrl,body, {headers: headers})
+      .toPromise()
+      .then((Response: any) => {console.log(participantName + ' added.'); this.calendars.participants.push(Response.json());})
+      .catch((error: any) => console.log(error));
+  }
+
+
+  deleteParticipant(userId: string){
+    let token = localStorage.getItem('CCAdmin');
+    let targetUrl = this.calendarUrl + '/participants/' + userId;
+    let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': this.authToken});
+    this.http.delete(targetUrl, {headers: headers})
+      .toPromise()
+      .then((Response: any) => {console.log('Deleted Participant? ' + Response.ok)})
+      .catch((error: any) => console.log(error));
+  }
+
+  refreshCalendar(): Observable<void>{
+    let retrievedToken = localStorage.getItem('CCAdmin');
+    this.authToken = JSON.parse(retrievedToken).token;
+    return this.getEditableCalendar();
   }
 
 }

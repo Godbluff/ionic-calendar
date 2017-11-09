@@ -1,3 +1,59 @@
 page-calendar-doors {
+  .door-select {
+    height: 50px;
+    width: 100%;
+    display: inline-block;
+    border: 1px dotted white;
+    text-align: center;
+    line-height: 50px;
+    font-size: 23px;
+    background: rgba(0, 24, 0, 0.4);
+    text-shadow: 0px 0px 2px black;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+  }
+  .door-select:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid lightgreen;
+  }
+  .door-select.selected {
+    background: rgba(128, 196, 128, 0.5);
+    transform: scale(1.2);
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 24, 0, 1);
+  }
 
+  ion-slides{
+    height: 50px;
+    width: 24%;
+    margin-left: 38%;
+    overflow: visible;
+
+    .swiper-container{
+      overflow: visible;
+
+      ion-slide{
+        width: 100% !important;
+
+        &:first-of-type:before{
+          content: 'Dra eller klikk på datoer for å redigere.';
+          height: calc(100% - 12px);
+          width: 38vw;
+          position: absolute;
+          font-size: 12px;
+          line-height: 14px;
+          padding-top: 12px;
+          top: 0;
+          left: -38vw;
+        }
+
+        .swiper-slide-active{
+
+        }
+      }
+    }
+
+
+
+  }
 }

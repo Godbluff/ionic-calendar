@@ -15,7 +15,7 @@
     <br/><br/>
     <div class="input-header">Passord</div>
     <input class="front-input" placeholder="" [(ngModel)]="userName"/>
-    <div class="button" style="width: 80%; margin-top:20px; position: relative;" (click)="getCalendar()">
+    <div class="snowbutton" style="width: 80%; margin-top:20px; position: relative;" (click)="getCalendar()">
       {{languageService.texts.openCal[languageService.setLanguage]}}
     </div>
     <div class="timer" [class.visible]="isLoading"></div>

@@ -7,16 +7,38 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>calendar-doors</ion-title>
+    <ion-title>{{editor.calendars.companyName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-item>
-    <ion-label>Dag</ion-label>
-    <ion-datetime displayFormat="DD" [(ngModel)]="myDate"></ion-datetime>
-  </ion-item>
+  <ion-slides>
+    <ion-slide *ngFor="let door of editor.calendars.doors; let i = index"
+               [class.selected]="highlightStatus[i]" class="door-select"
+               (click)="showDoorData(i)"
+    >{{i+1}}.</ion-slide>
+  </ion-slides>
+
+  <div *ngIf="editor.calendars.doors" style="padding: 20px 10px 10px;">
+    <ion-list>
+      <ion-item style="border-left: 1px solid rgba(0,0,0,.2)">
+        <ion-label floating>Sitat (valgfritt)</ion-label>
+        <ion-textarea [(ngModel)]="editor.calendars.doors[currentDoor()].quote"></ion-textarea>
+      </ion-item>
+      <ion-item style="border-left: 1px solid rgba(0,0,0,.2)">
+        <ion-label floating>Premiebeskrivelse</ion-label>
+        <ion-textarea [(ngModel)]="editor.calendars.doors[currentDoor()].prize"></ion-textarea>
+      </ion-item>
+      <ion-item style="border-left: 1px solid rgba(0,0,0,.2)">
+        <ion-label floating>Instruksjoner (valgfritt)</ion-label>
+        <ion-textarea [(ngModel)]="editor.calendars.doors[currentDoor()].instructions"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+
+  </div>
+
 
 </ion-content>

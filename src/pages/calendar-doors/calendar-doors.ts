@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
+import {EditorProvider} from "../../providers/editor/editor";
 
 /**
  * Generated class for the CalendarDoorsPage page.
@@ -15,11 +16,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CalendarDoorsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild(Slides)doorSlider: Slides;
+  highlightStatus: Array<boolean> = [false];
+  activeDoor: any = {
+    quote: '',
+  };
+  isLoading = true;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public editor: EditorProvider) {
   }
 
   ionViewDidLoad() {
+    this.isLoading = false;
     console.log('ionViewDidLoad CalendarDoorsPage');
+    console.log(this.editor.calendars.doors);
+  }
+
+  showDoorData(doorNr){
+    console.log(doorNr);
+    this.activeDoor = this.editor.calendars.doors[doorNr];
+    console.log('active door quote', this.activeDoor);
+    this.doorSlider.slideTo(doorNr,250);
+  }
+
+  currentDoor(){
+    return this.doorSlider.getActiveIndex();
   }
 
 }

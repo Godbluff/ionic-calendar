@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import {EditorProvider} from "../../providers/editor/editor";
 
 /**
  * Generated class for the EditorPage tabs.
@@ -15,11 +16,20 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class EditorPage {
 
-  calendarInfoRoot = 'CalendarInfoPage'
-  calendarMembersRoot = 'CalendarMembersPage'
-  calendarDoorsRoot = 'CalendarDoorsPage'
+  calendarInfoRoot = 'CalendarInfoPage';
+  calendarMembersRoot = 'CalendarMembersPage';
+  calendarDoorsRoot = 'CalendarDoorsPage';
 
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, public editor: EditorProvider) {}
+
+
+  ionViewWillEnter(){
+    this.editor.refreshCalendar().subscribe(()=>{
+    });
+  }
+  ngOnInit(){
+
+  }
 
 }
