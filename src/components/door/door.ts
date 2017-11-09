@@ -3,6 +3,7 @@ import {CalendarService} from "../../services/calendar/calendar-service";
 import {Headers, Http, Response} from "@angular/http";
 import {ModalService} from "../../services/modal/modal-service";
 import {Prize} from "../../entities/prize.entity";
+import {Content} from "ionic-angular";
 
 /**
  * Generated class for the DoorComponent component.
@@ -18,9 +19,9 @@ export class DoorComponent {
   @Input('doorNumber') doorNumber: number;
   @Input() isOpened: boolean = false;
   @Input() containerId: string;
-  @Input() location: string;
 
   @ViewChild('door') door: ElementRef;
+  @ViewChild(Content) content: Content;
 
   text: string;
   doorQuote: string;
@@ -46,6 +47,7 @@ export class DoorComponent {
   }
 
   ngOnInit() {
+    this.adjustDoors();
     window.addEventListener('orientationchange', () => {
       this.adjustDoors();
     });
@@ -56,14 +58,6 @@ export class DoorComponent {
 
   ngOnChanges() {
     console.log('got new inputs', this.loaderVisible);
-    this.adjustDoors();
-  }
-
-  ngAfterViewInit(){
-      this.adjustDoors();
-  }
-  ngAfterViewChecked(){
-    this.adjustDoors();
   }
 
   adjustDoors(){
@@ -82,7 +76,6 @@ export class DoorComponent {
         this.doorOpen = !this.doorOpen;
         this.loaderVisible = 'none';
       })
-
   }
 
   openModal(){
