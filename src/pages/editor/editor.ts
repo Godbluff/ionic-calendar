@@ -25,8 +25,11 @@ export class EditorPage {
 
 
   ionViewWillEnter(){
-    this.editor.refreshCalendar().subscribe(()=>{
-    });
+    if(!this.editor.calendars.doors){
+      this.editor.refreshCalendar().subscribe(()=>{
+      });
+    }
+
   }
   ngOnInit(){
 

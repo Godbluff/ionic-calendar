@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
 import {EditorProvider} from "../../providers/editor/editor";
+import {EditableDoor} from "../../entities/editable-door.entity";
 
 /**
  * Generated class for the CalendarDoorsPage page.
@@ -18,9 +19,7 @@ export class CalendarDoorsPage {
 
   @ViewChild(Slides)doorSlider: Slides;
   highlightStatus: Array<boolean> = [false];
-  activeDoor: any = {
-    quote: '',
-  };
+  activeDoor: EditableDoor = new EditableDoor();
   isLoading = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public editor: EditorProvider) {
@@ -40,7 +39,11 @@ export class CalendarDoorsPage {
   }
 
   currentDoor(){
-    return this.doorSlider.getActiveIndex();
+    return this.doorSlider.getActiveIndex() || 0;
+  }
+
+  blurFunction(){
+    console.log('blurred');
   }
 
 }

@@ -21,11 +21,11 @@
     >{{i+1}}.</ion-slide>
   </ion-slides>
 
-  <div *ngIf="editor.calendars.doors" style="padding: 20px 10px 10px;">
+  <div style="padding: 20px 10px 10px;">
     <ion-list>
       <ion-item style="border-left: 1px solid rgba(0,0,0,.2)">
         <ion-label floating>Sitat (valgfritt)</ion-label>
-        <ion-textarea [(ngModel)]="editor.calendars.doors[currentDoor()].quote"></ion-textarea>
+        <ion-textarea [(ngModel)]="editor.calendars.doors[currentDoor()].quote" (blur)="blurFunction()"></ion-textarea>
       </ion-item>
       <ion-item style="border-left: 1px solid rgba(0,0,0,.2)">
         <ion-label floating>Premiebeskrivelse</ion-label>
@@ -36,6 +36,15 @@
         <ion-textarea [(ngModel)]="editor.calendars.doors[currentDoor()].instructions"></ion-textarea>
       </ion-item>
     </ion-list>
+
+    <div>
+      <img [src]="editor.calendars.doors[currentDoor()].imageUrl" style="width: 60%;">
+      <div style="float: right; display: flex; flex-direction: column; height: 100%;">
+        <button style="background: blue: color; white; height: 32%; margin-bottom: 1%;">Url</button>
+        <button style="background: blue: color; white; height: 32%; margin-bottom: 1%;">Camera</button>
+        <button style="background: blue: color; white; height: 32%; margin-bottom: 1%;">Gallery</button>
+      </div>
+    </div>
 
 
   </div>

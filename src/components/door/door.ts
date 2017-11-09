@@ -18,6 +18,7 @@ export class DoorComponent {
   @Input('doorNumber') doorNumber: number;
   @Input() isOpened: boolean = false;
   @Input() containerId: string;
+  @Input() location: string;
 
   text: string;
   doorQuote: string;

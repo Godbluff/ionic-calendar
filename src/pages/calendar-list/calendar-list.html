@@ -18,14 +18,16 @@ First Item is a '+' for creating a new calendar.
   If user has calendars, first list calendars (same as for user), and then the '+' at the bottom of the list.
 
   <h2>Tilgjengelige kalendere</h2>
-
+<div *ngIf="editor.calendars.doors">
   <ion-card (click)="toCalendarEdit()">
     <img src="assets/images/calendar-bg.jpg"/>
     <div class="card-title">
       <div class="header">{{editor.calendars.companyName}}</div>
-      <div class="sub-title">21 Memebers</div>
+      <div class="sub-title">{{editor.calendars.participants.length}} deltagere</div>
     </div>
   </ion-card>
+</div>
+
 
   <button (click)="toEditorPage()">Edit Calendar</button>
 </ion-content>
