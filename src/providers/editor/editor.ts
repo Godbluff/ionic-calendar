@@ -3,12 +3,7 @@ import {Http, Headers, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
 
-/*
- Generated class for the EditorProvider provider.
 
- See https://angular.io/guide/dependency-injection for more info on providers
- and Angular DI.
- */
 @Injectable()
 export class EditorProvider {
 
