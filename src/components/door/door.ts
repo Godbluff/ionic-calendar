@@ -46,59 +46,37 @@ export class DoorComponent {
   }
 
   ngOnInit() {
-    console.log(this.doorNumber);
+    window.addEventListener('orientationchange', () => {
+      this.adjustDoors();
+    });
+    window.addEventListener('resize', () => {
+      this.adjustDoors();
+    });
   }
 
   ngOnChanges() {
     console.log('got new inputs', this.loaderVisible);
-
+    this.adjustDoors();
   }
 
   ngAfterViewInit(){
-    setTimeout(() => {
       this.adjustDoors();
-    },0);
+  }
+  ngAfterViewChecked(){
+    this.adjustDoors();
   }
 
   adjustDoors(){
-    console.log('New top: ', this.door.nativeElement.offsetTop, 'New left: ', this.door.nativeElement.offsetLeft);
-    var el = document.querySelector("#" + this.containerId);
-    var top = el.getBoundingClientRect().top;
-    var left = el.getBoundingClientRect().left;
-    console.log('Old: top: ', top, 'Old left: ', left);
-    var el = document.querySelector("#" + this.containerId);
-    var top = el.getBoundingClientRect().top;
-    var left = el.getBoundingClientRect().left;
+    var top = this.door.nativeElement.offsetTop;
+    var left = this.door.nativeElement.offsetLeft;
     this.bgPos = `${-left-1}px ${-top-1}px`;
-
-    window.addEventListener('orientationchange', () => {
-      var el = document.querySelector("#" + this.containerId);
-      var top = el.getBoundingClientRect().top;
-      var left = el.getBoundingClientRect().left;
-      let scrollTop = window.scrollY;
-      this.bgPos = `${-left-1}px ${-top -scrollTop -1}px`;
-    });
-    window.addEventListener('resize', () => {
-      var el = document.querySelector("#" + this.containerId);
-      var top = el.getBoundingClientRect().top;
-      var left = el.getBoundingClientRect().left;
-      let scrollTop = window.scrollY;
-      let bigscreen =  screen.width;
-      if(bigscreen > 1280) {
-        this.bgPos = `${-left - 1}px ${-top -scrollTop - 1}px`;
-      }
-    });
   }
 
   toggleDoor(): void {
       this.loaderVisible = 'block';
       this.calendarService.openDoor(this.doorNumber).subscribe((door: Prize)=>{
         this.doorData = door;
-        door.prize ? this.prize = door.prize : '';
-        door.instructions ? this.instructions = door.instructions : '';
         door.quote ? this.doorQuote = door.quote : '';
-        door.win ? this.userWin = door.win : false;
-        door.imageUrl ? this.imageUrl = door.imageUrl : this.imageUrl = 'http://www.stoltzimage.com/images/white-box-with-bow.jpg';
         door.available ? this.doorAvailable = door.available : false;
         door.open ? this.isOpened = door.available : false;
         this.doorOpen = !this.doorOpen;
