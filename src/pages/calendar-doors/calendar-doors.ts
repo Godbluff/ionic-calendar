@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
 import {EditorProvider} from "../../providers/editor/editor";
 import {EditableDoor} from "../../entities/editable-door.entity";
+import {Camera, CameraOptions} from '@ionic-native/camera';
 
 /**
  * Generated class for the CalendarDoorsPage page.
@@ -17,12 +18,12 @@ import {EditableDoor} from "../../entities/editable-door.entity";
 })
 export class CalendarDoorsPage {
 
-  @ViewChild(Slides)doorSlider: Slides;
+  @ViewChild(Slides) doorSlider: Slides;
   highlightStatus: Array<boolean> = [false];
   activeDoor: EditableDoor = new EditableDoor();
   isLoading = true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public editor: EditorProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public editor: EditorProvider, public camera: Camera) {
   }
 
   ionViewDidLoad() {
@@ -31,19 +32,46 @@ export class CalendarDoorsPage {
     console.log(this.editor.calendars.doors);
   }
 
-  showDoorData(doorNr){
+  showDoorData(doorNr) {
     console.log(doorNr);
     this.activeDoor = this.editor.calendars.doors[doorNr];
     console.log('active door quote', this.activeDoor);
-    this.doorSlider.slideTo(doorNr,250);
+    this.doorSlider.slideTo(doorNr, 250);
   }
 
-  currentDoor(){
+  currentDoor() {
     return this.doorSlider.getActiveIndex() || 0;
   }
 
-  blurFunction(){
+  blurFunction() {
     console.log('blurred');
+  }
+
+  getCameraImage() {
+    this.camera.getPicture({
+      destinationType: this.camera.DestinationType.DATA_URL,
+      targetWidth: 400,
+      targetHeight: 400,
+      allowEdit: true,
+      saveToPhotoAlbum: false,
+      correctOrientation: true,
+      cameraDirection: this.camera.Direction.FRONT
+    }).then((imageData)=> {
+      this.editor.calendars.doors[this.currentDoor()].imageUrl = "data:image/jpeg;base64," + imageData;
+    });
+  }
+
+  getGalleryImage() {
+    this.camera.getPicture({
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      targetWidth: 400,
+      targetHeight: 400,
+      allowEdit: true,
+      correctOrientation: true
+    }).then((imageData)=> {
+      this.editor.calendars.doors[this.currentDoor()].imageUrl = "data:image/jpeg;base64," + imageData;
+    });
   }
 
 }

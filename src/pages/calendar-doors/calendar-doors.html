@@ -39,9 +39,10 @@
 
     <div>
       <img [src]="editor.calendars.doors[currentDoor()].imageUrl" style="width: 60%;">
+      <img [src]="cameraImg" style="height: 200px; width: 200px;">
       <div style="float: right; display: flex; flex-direction: column; height: 100%;">
         <button style="background: blue: color; white; height: 32%; margin-bottom: 1%;">Url</button>
-        <button style="background: blue: color; white; height: 32%; margin-bottom: 1%;">Camera</button>
+        <button style="background: blue; color: white; height: 40px; margin-bottom: 1%;" (click)="getImage()">Camera</button>
         <button style="background: blue: color; white; height: 32%; margin-bottom: 1%;">Gallery</button>
       </div>
     </div>

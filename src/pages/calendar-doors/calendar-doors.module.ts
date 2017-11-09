@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CalendarDoorsPage } from './calendar-doors';
+import {Camera} from "@ionic-native/camera";
 
 @NgModule({
   declarations: [
@@ -9,5 +10,8 @@ import { CalendarDoorsPage } from './calendar-doors';
   imports: [
     IonicPageModule.forChild(CalendarDoorsPage),
   ],
+  providers:[
+    Camera
+  ]
 })
 export class CalendarDoorsPageModule {}
