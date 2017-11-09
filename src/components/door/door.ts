@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild, ElementRef} from '@angular/core';
 import {CalendarService} from "../../services/calendar/calendar-service";
 import {Headers, Http, Response} from "@angular/http";
 import {ModalService} from "../../services/modal/modal-service";
@@ -19,6 +19,8 @@ export class DoorComponent {
   @Input() isOpened: boolean = false;
   @Input() containerId: string;
   @Input() location: string;
+
+  @ViewChild('door') door: ElementRef;
 
   text: string;
   doorQuote: string;
@@ -49,6 +51,7 @@ export class DoorComponent {
 
   ngOnChanges() {
     console.log('got new inputs', this.loaderVisible);
+
   }
 
   ngAfterViewInit(){
@@ -58,6 +61,11 @@ export class DoorComponent {
   }
 
   adjustDoors(){
+    console.log('New top: ', this.door.nativeElement.offsetTop, 'New left: ', this.door.nativeElement.offsetLeft);
+    var el = document.querySelector("#" + this.containerId);
+    var top = el.getBoundingClientRect().top;
+    var left = el.getBoundingClientRect().left;
+    console.log('Old: top: ', top, 'Old left: ', left);
     var el = document.querySelector("#" + this.containerId);
     var top = el.getBoundingClientRect().top;
     var left = el.getBoundingClientRect().left;
