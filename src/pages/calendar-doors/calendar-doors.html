@@ -13,7 +13,9 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="doors-page" padding>
+  <div  *ngIf="!editor.calendars.doors">Loading...</div>
+
   <ion-slides>
     <ion-slide *ngFor="let door of editor.calendars.doors; let i = index"
                [class.selected]="highlightStatus[i]" class="door-select"
@@ -21,7 +23,7 @@
     >{{i+1}}.</ion-slide>
   </ion-slides>
 
-  <div style="padding: 20px 10px 10px;">
+  <div style="padding: 20px 10px 10px;" *ngIf="editor.calendars.doors">
     <ion-list>
       <ion-item style="border-left: 1px solid rgba(0,0,0,.2)">
         <ion-label floating>Sitat (valgfritt)</ion-label>
@@ -39,11 +41,10 @@
 
     <div>
       <img [src]="editor.calendars.doors[currentDoor()].imageUrl" style="width: 60%;">
-      <img [src]="cameraImg" style="height: 200px; width: 200px;">
       <div style="float: right; display: flex; flex-direction: column; height: 100%;">
-        <button style="background: blue: color; white; height: 32%; margin-bottom: 1%;">Url</button>
-        <button style="background: blue; color: white; height: 40px; margin-bottom: 1%;" (click)="getImage()">Camera</button>
-        <button style="background: blue: color; white; height: 32%; margin-bottom: 1%;">Gallery</button>
+        <button style="background: blue; color: white; height: 40px; margin-bottom: 1%;">Url</button>
+        <button style="background: blue; color: white; height: 40px; margin-bottom: 1%;" (click)="getCameraImage()">Camera</button>
+        <button style="background: blue; color: white; height: 40px; margin-bottom: 1%;" (click)="getGalleryImage()">Gallery</button>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {EditorProvider} from "../../providers/editor/editor";
 
 /**
@@ -26,20 +26,29 @@ export class CalendarMembersPage {
     console.log(this.editor.calendars);
   }
 
-  addParticipant(name: any) {
-    if (this.editor.calendars.participants.filter((p: any) => p.name == this.newParticipant).length > 0) {
-      this.newParticipant = 'Participant already added.';
-      setTimeout(() => {this.newParticipant = ''},2000);
-      console.log('Already in the participants list, dude!');
+  addParticipant(inputString: any) {
+    let names = inputString.split(/,|;| /);
+    let duplicateUsers = [];
+    names.map((name)=> {
+      if (this.editor.calendars.participants.filter((p: any) => p.name == name).length > 0) {
+        duplicateUsers.push(name);
+      }
+      else if (names.length > 0) {
+        names.map((name)=> {
+          this.editor.insertParticipant(name);
+        });
+      }
+    });
+    this.newParticipant = '';
+    if (duplicateUsers.length > 0) {
+      this.newParticipant = 'Allerede lagt til: ' + duplicateUsers;
     }
-    else if(this.newParticipant.length >= 2) { this.editor.insertParticipant(name);
-      this.newParticipant = '';}
   }
 
 
-  removeParticipant(loc: number){
+  removeParticipant(loc: number) {
     let user = this.editor.calendars.participants[loc].id;
-    this.editor.calendars.participants.splice(loc,1);
+    this.editor.calendars.participants.splice(loc, 1);
     this.editor.deleteParticipant(user);
   }
 

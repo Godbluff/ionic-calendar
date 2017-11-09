@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
 import {EditorProvider} from "../../providers/editor/editor";
 import {EditableDoor} from "../../entities/editable-door.entity";
@@ -19,6 +19,11 @@ import {Camera, CameraOptions} from '@ionic-native/camera';
 export class CalendarDoorsPage {
 
   @ViewChild(Slides) doorSlider: Slides;
+  @ViewChild('quoteInput') quoteInput: ElementRef;
+  @ViewChild('prizeInput') prizeInput: ElementRef;
+  @ViewChild('instructionInput') instructionInput: ElementRef;
+
+
   highlightStatus: Array<boolean> = [false];
   activeDoor: EditableDoor = new EditableDoor();
   isLoading = true;
