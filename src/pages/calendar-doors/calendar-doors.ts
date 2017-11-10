@@ -79,4 +79,10 @@ export class CalendarDoorsPage {
     });
   }
 
+  updateDoor(doorNr) {
+    this.editor.updateDoorNr(doorNr).subscribe(()=>{
+      console.log('Updated door')
+    });
+  }
+
 }

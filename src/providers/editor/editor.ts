@@ -102,4 +102,30 @@ export class EditorProvider {
     return this.getEditableCalendar();
   }
 
+  // updateDoor(door: any): Observable<void>{
+  //   console.log(door);
+  //   let header: any = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': this.authToken});
+  //   let targetUrl = this.calendarUrl + '/doors/' + (door+1);
+  //   let body: any = this.calendars.doors[door];
+  //   this.calendars.doors[door].number === (door+1) ? console.log('Numbers match up.') : console.log('Door Number mismatch');
+  //   return this.http.put(targetUrl, body, {headers: header})
+  //     .toPromise()
+  //     .then((Response: any) => {console.log(Response.status)})
+  //     .catch((error: any) => console.log(error));
+  // }
+
+  updateDoorNr(door: number): Observable<void>{
+    console.log('updating door: ', door);
+    let header: any = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': this.authToken});
+    let targetUrl = this.calendarUrl + '/doors/' + (door+1);
+    let body: any = this.calendars.doors[door];
+    return this.http.put(targetUrl, body, { headers: header })
+      .map((res: Response)=>{
+        console.log('updated door successfully')
+      })
+      .catch((error: Response)=>{
+        return Observable.throw(error);
+      });
+  }
+
 }

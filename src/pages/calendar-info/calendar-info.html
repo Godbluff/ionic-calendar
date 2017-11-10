@@ -22,20 +22,16 @@
       <ion-input [(ngModel)]="editor.calendars.companyName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Bakgrunnsbilde</ion-label>
-      <ion-input [(ngModel)]="editor.calendars.companyName"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label floating>Logobilde</ion-label>
-      <ion-input [(ngModel)]="editor.calendars.companyName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>administrator e-mail</ion-label>
-      <ion-input [(ngModel)]="editor.calendars.companyName"></ion-input>
+      <ion-input [(ngModel)]="editor.calendars.logoUrl"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Vinnere per dag</ion-label>
-      <ion-input [(ngModel)]="editor.calendars.companyName"></ion-input>
+      <ion-input [(ngModel)]="editor.calendars.winnersPerDay"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Alle dører tilgjengelige</ion-label>
+      <ion-toggle  disabled="false" [(ngModel)]="editor.calendars.doorsAlwaysAvailable"></ion-toggle>
     </ion-item>
   </ion-list>
 
