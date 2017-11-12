@@ -21,15 +21,17 @@ page-calendar-administrate {
       height: 50px;
     }
 
-    .toolbar-background, toolbar-background-ios{
-      color: black;
-      background-color: white;
-      background-image: url('../assets/images/border-horizontal-8x7.svg');
-      background-position: bottom;
-      background-repeat: repeat-x;
-      background-size: auto 34px;
-      border: none;
-      padding-bottom: 34px;
+    .toolbar-background{
+      &.toolbar-background-ios{
+        color: black;
+        background-color: white;
+        background-image: url('../assets/images/border-horizontal-8x7.svg'),  url('../assets/images/snow-tile.jpg');
+        background-position: bottom, center;
+        background-repeat: repeat-x, repeat;
+        background-size: auto 34px, auto;
+        border: none;
+        padding-bottom: 34px;
+      }
     }
   }
 

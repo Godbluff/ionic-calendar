@@ -21,15 +21,17 @@ page-calendar-list {
       height: 50px;
     }
 
-    .toolbar-background, toolbar-background-ios{
-      color: black;
-      background-color: white;
-      background-image: url('../assets/images/border-horizontal-8x7.svg');
-      background-position: bottom;
-      background-repeat: repeat-x;
-      background-size: auto 34px;
-      border: none;
-      padding-bottom: 34px;
+    .toolbar-background{
+      &.toolbar-background-ios{
+        color: black;
+        background-color: white;
+        background-image: url('../assets/images/border-horizontal-8x7.svg'),  url('../assets/images/snow-tile.jpg');
+        background-position: bottom, center;
+        background-repeat: repeat-x, repeat;
+        background-size: auto 34px, auto;
+        border: none;
+        padding-bottom: 34px;
+      }
     }
   }
 
@@ -73,13 +75,13 @@ page-calendar-list {
       left: 0;
       color: white;
 
-
       .header{
         font-family: 'Henny Penny', Arial, sans-serif;
         font-size: 4rem;
         color: white;
         text-shadow: 1px 1px 1px black;
       }
+
       .sub-title{
         text-align: right;
         margin-right: 20px;

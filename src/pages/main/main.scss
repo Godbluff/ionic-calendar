@@ -1,8 +1,44 @@
+ion-navbar{
+  height: 80px;
+
+  .back-button.show-back-button{
+    position: absolute;
+    top: 8px;
+    color: white;
+  }
+
+  .title-ios{
+    height: 50px;
+    &.white{
+      .toolbar-title{
+        &.toolbar-title-ios{
+          color: white;
+          font-size: 2.5rem;
+        }
+      }
+    }
+
+  }
+
+  .toolbar-background{
+    &.toolbar-background-ios{
+      color: white;
+      background-color: white;
+      background-image: url('../assets/images/border-horizontal-8x7--white.svg'),  url('../assets/images/chrismasbg2.jpg');
+      background-position: bottom, center;
+      background-repeat: repeat-x, repeat;
+      background-size: auto 34px, auto;
+      border: none;
+      padding-bottom: 34px;
+    }
+  }
+}
+
 .main-page {
-  background-image:url('../assets/images/border-horizontal-9x15--white.svg'), url('../assets/images/chrismasbg2.jpg');
-  background-size:50px auto,cover;
-  background-position: top, center;
-  background-repeat: repeat-x, auto;
+  background-image:url('../assets/images/chrismasbg2.jpg');
+  background-size:cover;
+  background-position: center;
+  background-repeat:auto;
   color: white;
   text-align: center;
 
