@@ -7,17 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Administrate Calendar</ion-title>
+    <ion-title>Rediger kalendere</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-Add login for navigation to calendar list page.
+<ion-content class="admin-login">
 
   <ion-list>
-    <ion-list-header>Administrator Login</ion-list-header>
     <ion-item>
       <ion-label floating>Username</ion-label>
       <ion-input [(ngModel)]="editor.calendarAdmin.username"></ion-input>
@@ -27,8 +25,8 @@ Add login for navigation to calendar list page.
       <ion-input type="password" [(ngModel)]="editor.calendarAdmin.password"></ion-input>
     </ion-item>
     <ion-item>
-      <button ion-button round (click)="adminCalendars()">Get Calendars</button>
+      <button ion-button round  color="danger" (click)="adminCalendars()">Hent kalendere</button>
     </ion-item>
   </ion-list>
-  <button (click)="goToCalendarList()">Open Calendar List</button>
+  <!--<button (click)="goToCalendarList()">Open Calendar List</button>-->
 </ion-content>

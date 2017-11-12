@@ -1,7 +1,8 @@
 .main-page {
-  background-image: url('../assets/images/chrismasbg2.jpg');
-  background-size:cover;
-  background-position: center;
+  background-image:url('../assets/images/border-horizontal-9x15--white.svg'), url('../assets/images/chrismasbg2.jpg');
+  background-size:50px auto,cover;
+  background-position: top, center;
+  background-repeat: repeat-x, auto;
   color: white;
   text-align: center;
 

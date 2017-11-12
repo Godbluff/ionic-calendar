@@ -27,7 +27,7 @@ export class CalendarMembersPage {
   }
 
   addParticipant(inputString: any) {
-    let names = inputString.split(/,|;| /);
+    let names = inputString.split(/,|;/);
     let duplicateUsers = [];
     names.map((name)=> {
       if (this.editor.calendars.participants.filter((p: any) => p.name == name).length > 0) {

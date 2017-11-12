@@ -7,27 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Calendar List Page</ion-title>
+    <ion-title>Dine kalendere</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content class="calendar-list" padding>
-First Item is a '+' for creating a new calendar.
-  If user has calendars, first list calendars (same as for user), and then the '+' at the bottom of the list.
-
-  <h2>Tilgjengelige kalendere</h2>
-<div *ngIf="editor.calendars.doors">
-  <ion-card (click)="toCalendarEdit()">
-    <img src="assets/images/calendar-bg.jpg"/>
-    <div class="card-title">
-      <div class="header">{{editor.calendars.companyName}}</div>
-      <div class="sub-title">{{editor.calendars.participants.length}} deltagere</div>
-    </div>
-  </ion-card>
-</div>
+<ion-content class="calendar-list">
+  <div *ngIf="editor.calendars.doors" class="card-container">
+    <ion-card (click)="toCalendarEdit()">
+      <img src="assets/images/calendar-bg.jpg"/>
+      <div class="card-title">
+        <div class="header">{{editor.calendars.companyName}}</div>
+        <div class="sub-title">{{editor.calendars.participants.length}} deltagere</div>
+      </div>
+    </ion-card>
+    <img src="assets/images/star-separator-31x11.svg" height="50">
+  </div>
 
 
-  <button (click)="toEditorPage()">Edit Calendar</button>
+  <!--<button (click)="toEditorPage()">Edit Calendar</button>-->
 </ion-content>

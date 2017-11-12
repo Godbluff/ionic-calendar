@@ -1,7 +1,48 @@
 page-calendar-list {
   .calendar-list{
-    color: white;
-    background: url('../assets/images/editorbg.jpg');
+    color: black;
+    background-color: white;
+    background-image: url('../assets/images/border-vertical-8x7.svg'), url('../assets/images/border-vertical-8x7-reverse.svg'), url('../assets/images/snow-tile.jpg');
+    background-position: left, right, center;
+    background-repeat: repeat-y, repeat-y, repeat;
+    background-size: 40px auto, 40px auto, auto;
+  }
+
+  ion-navbar{
+    height: 80px;
+
+    .back-button.show-back-button{
+      position: absolute;
+      top: 8px;
+      color: red;
+    }
+
+    .title-ios{
+      height: 50px;
+    }
+
+    .toolbar-background, toolbar-background-ios{
+      color: black;
+      background-color: white;
+      background-image: url('../assets/images/border-horizontal-8x7.svg');
+      background-position: bottom;
+      background-repeat: repeat-x;
+      background-size: auto 34px;
+      border: none;
+      padding-bottom: 34px;
+    }
+  }
+
+  .scroll-content{
+    padding: 0 50px 16px 50px;
+  }
+
+  h2{
+    text-align: center;
+  }
+
+  .card-container{
+    text-align: center;
   }
 
   ion-card{
