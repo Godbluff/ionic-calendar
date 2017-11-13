@@ -1,12 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="white">{{calendarService.userCalendar.companyName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
 <ion-content>
 
   <div *ngIf="isLoading">Loading...</div>
 
   <div *ngIf="!isLoading" class="christmasbg">
 
-    <div class="calendar-header">Julekalender for {{calendarService.userCalendar.companyName}}</div>
-    <div class="calendar-border"></div>
-    <div>{{errorMessage}}</div>
+    <!--<div class="calendar-header">Julekalender for {{calendarService.userCalendar.companyName}}</div>-->
+    <!--<div class="calendar-border"></div>-->
+    <!--<div>{{errorMessage}}</div>-->
 
     <door *ngFor="let door of calendarService.userCalendar.doorSequence;
     let i = index;"
@@ -18,7 +26,7 @@
 
   </div>
 
-  <button navPop>Back to main</button>
-  <button (click)="toWinnerList()">To Winners List</button>
+  <!--<button navPop>Back to main</button>-->
+  <!--<button (click)="toWinnerList()">To Winners List</button>-->
 
 </ion-content>

@@ -1,6 +1,6 @@
 page-calendar-doors {
 
-  .doors-page{
+  .doors-page {
     color: black;
     background-color: white;
     background-image: url('../assets/images/border-vertical-8x7.svg'), url('../assets/images/border-vertical-8x7-reverse.svg'), url('../assets/images/snow-tile.jpg');
@@ -8,45 +8,43 @@ page-calendar-doors {
     background-repeat: repeat-y, repeat-y, repeat;
     background-size: 35px auto, 35px auto, auto;
 
-
-
   }
 
-  .item-ios{
+  .item-ios {
     background: transparent;
   }
-ion-header{
-  color: black;
-  background-color: white;
-  background-image: url(../assets/images/border-horizontal-8x7.svg), url(../assets/images/snow-tile.jpg);
-  background-position: bottom 5px center, center;
-  background-repeat: repeat-x, repeat;
-  background-size: 36px, auto;
-  border: none;
-  padding-bottom: 38px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5), inset 0 -1px 3px white;
-}
-  ion-navbar{
+  ion-header {
+    color: black;
+    background-color: white;
+    background-image: url(../assets/images/border-horizontal-8x7.svg), url(../assets/images/snow-tile.jpg);
+    background-position: bottom 5px center, center;
+    background-repeat: repeat-x, repeat;
+    background-size: 36px, auto;
+    border: none;
+    padding-bottom: 38px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 -1px 3px white;
+  }
+  ion-navbar {
     height: 100px;
 
-    .back-button.show-back-button{
+    .back-button.show-back-button {
       position: absolute;
       top: 0;
       color: red;
     }
 
-    .title-ios{
+    .title-ios {
       height: 36px;
     }
 
-    .toolbar-background{
-      &.toolbar-background-ios{
+    .toolbar-background {
+      &.toolbar-background-ios {
 
       }
     }
   }
 
-  .border-line{
+  .border-line {
     background: url('../assets/images/border-horizontal-5x3_2.svg');
     width: 100%;
     height: 30px;
@@ -76,30 +74,29 @@ ion-header{
   //  box-shadow: 2px 2px 8px rgba(0, 24, 0, 1);
   //}
 
-  ion-textarea{
+  ion-textarea {
     color: black;
     font-size: 1.5rem;
   }
 
-  ion-slides{
+  ion-slides {
     height: 18.6vw;
     width: 33vw;
     margin-left: 33vw;
     overflow: visible;
 
-
-    .swiper-container{
+    .swiper-container {
       overflow: visible;
 
-      ion-slide{
+      ion-slide {
         width: 100% !important;
         background: url('../assets/images/slider-pattern-reg-27x15.svg');
         background-size: contain;
 
-        &:first-of-type:before{
+        &:first-of-type:before {
           content: 'Dra eller klikk på datoer for å redigere.';
           height: calc(100% - 12px);
-          display:flex;
+          display: flex;
           align-items: center;
           justify-content: center;
           width: 29vw;
@@ -111,25 +108,28 @@ ion-header{
           left: -33vw;
         }
 
-
-      }.swiper-slide-active{
-          border-bottom: 2px solid white;
-               background: url('../assets/images/slider-pattern-active-27x15.svg');
-               background-size: contain;
-      border: none;
-       }
+      }
+      .swiper-slide-active {
+        border-bottom: 2px solid white;
+        background: url('../assets/images/slider-pattern-active-27x15.svg');
+        background-size: contain;
+        border: none;
+      }
     }
   }
-  .scroll-content{
-    padding: 10px 50px 16px 50px;
+  .scroll-content {
+    padding: 10px 40px 16px 40px;
 
-    .item-ios{
+    .item-ios {
       background: transparent;
     }
 
     .list-ios .item-block .item-inner {
-      border:none;
+      border: none;
 
+    }
+    .list-ios > .item-block:first-child, .list-ios > .item-block:last-child {
+      border: none;
     }
 
     ion-input{
@@ -138,8 +138,6 @@ ion-header{
       background-repeat: repeat-x;
       background-size: 5px auto;
     }
-
-
   }
 
 }

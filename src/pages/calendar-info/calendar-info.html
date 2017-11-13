@@ -13,10 +13,9 @@
 </ion-header>
 
 
-<ion-content class="info-page" padding>
+<ion-content class="info-page" style="text-align: center;">
 
   <ion-list>
-    <ion-list-header>Kalenderinformasjon</ion-list-header>
     <ion-item>
       <ion-label floating>Kalendernavn</ion-label>
       <ion-input [(ngModel)]="editor.calendars.companyName"></ion-input>
@@ -34,5 +33,6 @@
       <ion-toggle  disabled="false" [(ngModel)]="editor.calendars.doorsAlwaysAvailable"></ion-toggle>
     </ion-item>
   </ion-list>
+  <img src="../assets/images/star-29x29.svg" height="150">
 
 </ion-content>

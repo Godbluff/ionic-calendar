@@ -23,8 +23,14 @@
 
   <div class="error-message">{{calendarService.errorMessage}}</div>
 
-  <button (click)="viewMain()">To Main Page</button>
-  <button (click)="createNewAdmin()">Create New Calendar</button>
-  <button (click)="adminLogin()">Edit existing Calendar</button>
+  <div class="snowbutton" style="width: 80%; margin-top:20px; position: relative;" (click)="adminLogin()">
+    Administrer kalender
+  </div>
+  <div class="snowbutton" style="width: 80%; margin-top:20px; position: relative;" (click)="createNewAdmin()">
+    Opprett kalender
+  </div>
+  <!--<button (click)="viewMain()">To Main Page</button>-->
+  <!--<button (click)="createNewAdmin()">Create New Calendar</button>-->
+  <!--<button (click)="adminLogin()">Edit existing Calendar</button>-->
 
 </ion-content>

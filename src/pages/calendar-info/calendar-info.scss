@@ -1,6 +1,62 @@
 page-calendar-info {
-  .info-page{
-    background: url('../assets/images/editorbg.jpg');
-    color: white;
+
+  .info-page {
+    color: black;
+    background-color: white;
+    background-image: url('../assets/images/border-vertical-8x7.svg'), url('../assets/images/border-vertical-8x7-reverse.svg'), url('../assets/images/snow-tile.jpg');
+    background-position: left, right, center;
+    background-repeat: repeat-y, repeat-y, repeat;
+    background-size: 40px auto, 40px auto, auto;
+  }
+
+  ion-navbar {
+    height: 80px;
+
+    .back-button.show-back-button {
+      position: absolute;
+      top: 8px;
+      color: red;
+    }
+
+    .title-ios {
+      height: 50px;
+    }
+
+    .toolbar-background {
+      &.toolbar-background-ios {
+        color: black;
+        background-color: white;
+        background-image: url('../assets/images/border-horizontal-8x7.svg'), url('../assets/images/snow-tile.jpg');
+        background-position: bottom, center;
+        background-repeat: repeat-x, repeat;
+        background-size: auto 34px, auto;
+        border: none;
+        padding-bottom: 34px;
+      }
+    }
+  }
+
+  .scroll-content {
+    padding: 10px 50px 16px 50px;
+
+    .item-ios {
+      background: transparent;
+    }
+
+    .list-ios .item-block .item-inner {
+      border: none;
+
+    }
+    .list-ios > .item-block:first-child, .list-ios > .item-block:last-child {
+      border: none;
+    }
+
+    ion-input {
+      background: url('../assets/images/single-1x1.svg');
+      background-position: bottom left;
+      background-repeat: repeat-x;
+      background-size: 5px auto;
+    }
+
   }
 }
