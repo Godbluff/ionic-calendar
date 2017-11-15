@@ -1,143 +1,92 @@
 page-calendar-doors {
-
-  .doors-page {
-    color: black;
-    background-color: white;
-    background-image: url('../assets/images/border-vertical-8x7.svg'), url('../assets/images/border-vertical-8x7-reverse.svg'), url('../assets/images/snow-tile.jpg');
-    background-position: left, right, center;
-    background-repeat: repeat-y, repeat-y, repeat;
-    background-size: 35px auto, 35px auto, auto;
-
-  }
-
-  .item-ios {
-    background: transparent;
-  }
   ion-header {
     color: black;
     background-color: white;
-    background-image: url(../assets/images/border-horizontal-8x7.svg), url(../assets/images/snow-tile.jpg);
-    background-position: bottom 5px center, center;
+    background-image: url(../assets/images/border-horizontal-6x3.svg), url(../assets/images/snow-tile.jpg);
+    background-position: bottom 4px center, center;
     background-repeat: repeat-x, repeat;
-    background-size: 36px, auto;
+    background-size: 30px, auto;
     border: none;
-    padding-bottom: 38px;
+    padding-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 -1px 3px white;
-  }
-  ion-navbar {
-    height: 100px;
 
-    .back-button.show-back-button {
-      position: absolute;
-      top: 0;
-      color: red;
-    }
+    ion-slides {
+      height: 19.6vw;
+      width: 33vw;
+      margin-left: 33vw;
+      overflow: visible;
+      padding-top: 1vw;
+      overflow: visible;
 
-    .title-ios {
-      height: 36px;
-    }
+      .swiper-container {
+        overflow: visible;
 
-    .toolbar-background {
-      &.toolbar-background-ios {
+        ion-slide {
+          width: 100% !important;
+          background: url('../assets/images/slider-pattern-reg-27x15.svg');
+          background-size: contain;
 
+          &:first-of-type:before {
+            content: 'Dra eller klikk på datoer for å redigere.';
+            height: calc(100% - 12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 29vw;
+            position: absolute;
+            font-size: 12px;
+            line-height: 14px;
+            padding: 2vw;
+            top: 0;
+            left: -33vw;
+          }
+
+        }
+        .swiper-slide-active {
+          border-bottom: 2px solid white;
+          background: url('../assets/images/slider-pattern-active-27x15.svg');
+          background-size: contain;
+          border: none;
+        }
       }
     }
   }
+  ion-content {
+    &.doors-page {
+      color: black;
+      background-color: white;
+      background-image: url('../assets/images/border-vertical-8x7.svg'), url('../assets/images/border-vertical-8x7-reverse.svg'), url('../assets/images/snow-tile.jpg');
+      background-position: left, right, center;
+      background-repeat: repeat-y, repeat-y, repeat;
+      background-size: 35px auto, 35px auto, auto;
 
-  .border-line {
-    background: url('../assets/images/border-horizontal-5x3_2.svg');
-    width: 100%;
-    height: 30px;
-  }
+      .scroll-content {
+        padding: 10px 50px 16px 50px;
 
-  //.door-select {
-  //  height: 50px;
-  //  width: 100%;
-  //  display: inline-block;
-  //  border: 1px dotted white;
-  //  text-align: center;
-  //  line-height: 50px;
-  //  font-size: 23px;
-  //  background: rgba(0, 24, 0, 0.4);
-  //  text-shadow: 0px 0px 2px black;
-  //  cursor: pointer;
-  //  transition: all 100ms ease-in-out;
-  //}
-  //.door-select:hover {
-  //  background: rgba(255, 255, 255, 0.2);
-  //  border: 1px solid lightgreen;
-  //}
-  //.door-select.selected {
-  //  background: rgba(128, 196, 128, 0.5);
-  //  transform: scale(1.2);
-  //  border-radius: 10px;
-  //  box-shadow: 2px 2px 8px rgba(0, 24, 0, 1);
-  //}
+        .list-ios .item-block .item-inner {
+          border: none;
 
-  ion-textarea {
-    color: black;
-    font-size: 1.5rem;
-  }
+        }
+        .list-ios > .item-block:first-child, .list-ios > .item-block:last-child {
+          border: none;
+        }
 
-  ion-slides {
-    height: 18.6vw;
-    width: 33vw;
-    margin-left: 33vw;
-    overflow: visible;
+        ion-input {
+          background: url('../assets/images/single-1x1.svg');
+          background-position: bottom left;
+          background-repeat: repeat-x;
+          background-size: 5px auto;
+        }
 
-    .swiper-container {
-      overflow: visible;
-
-      ion-slide {
-        width: 100% !important;
-        background: url('../assets/images/slider-pattern-reg-27x15.svg');
-        background-size: contain;
-
-        &:first-of-type:before {
-          content: 'Dra eller klikk på datoer for å redigere.';
-          height: calc(100% - 12px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 29vw;
-          position: absolute;
-          font-size: 12px;
-          line-height: 14px;
-          padding: 2vw;
-          top: 0;
-          left: -33vw;
+        ion-textarea {
+          color: black;
+          font-size: 1.5rem;
         }
 
       }
-      .swiper-slide-active {
-        border-bottom: 2px solid white;
-        background: url('../assets/images/slider-pattern-active-27x15.svg');
-        background-size: contain;
-        border: none;
-      }
+
     }
+
   }
-  .scroll-content {
-    padding: 10px 40px 16px 40px;
-
-    .item-ios {
-      background: transparent;
-    }
-
-    .list-ios .item-block .item-inner {
-      border: none;
-
-    }
-    .list-ios > .item-block:first-child, .list-ios > .item-block:last-child {
-      border: none;
-    }
-
-    ion-input{
-      background: url('../assets/images/single-1x1.svg');
-      background-position: bottom left;
-      background-repeat: repeat-x;
-      background-size: 5px auto;
-    }
-  }
-
 }
+
