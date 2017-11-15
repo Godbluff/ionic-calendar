@@ -201,3 +201,84 @@ div.panel-heading {
     padding-left: 10px;
   }
 }
+ion-header{
+  ion-navbar {
+    height: 85px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+
+    .back-button.show-back-button {
+      position: absolute;
+      top: 8px;
+      color: black;
+    }
+
+    .title-ios {
+      height: 50px;
+
+      .toolbar-title-ios {
+        font-size: 2rem;
+      }
+    }
+
+    .toolbar-background {
+      &.toolbar-background-ios {
+        background-color: white;
+        background-image: url('../assets/images/border-horizontal-8x7.svg'), url('../assets/images/snow-tile.jpg');
+        background-position: center calc(100% - 4px), center;
+        background-repeat: repeat-x, repeat;
+        background-size: auto 34px, auto;
+        border: none;
+        padding-bottom: 34px;
+      }
+    }
+
+    &.white {
+
+      .back-button.show-back-button {
+        color: white;
+      }
+
+      .toolbar-title-ios {
+        color: white;
+
+      }
+      .toolbar-background-ios {
+        background-color: white;
+        background-image: url('../assets/images/border-horizontal-8x7--white.svg'), url('../assets/images/chrismasbg2.jpg');
+      }
+
+    }
+
+    &.door-select {
+      box-shadow: none;
+    }
+
+  }
+}
+
+ion-content{
+  &.editor{
+    .scroll-content {
+      padding: 10px 40px 16px 40px;
+
+      .item-ios {
+        background: transparent;
+      }
+
+      .list-ios .item-block .item-inner {
+        border: none;
+
+      }
+      .list-ios > .item-block:first-child, .list-ios > .item-block:last-child {
+        border: none;
+      }
+
+      ion-input{
+        background: url('../assets/images/single-1x1.svg');
+        background-position: bottom left;
+        background-repeat: repeat-x;
+        background-size: 5px auto;
+      }
+    }
+  }
+}

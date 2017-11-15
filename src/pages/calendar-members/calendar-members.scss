@@ -9,36 +9,6 @@ page-calendar-members {
     background-size: 40px auto, 40px auto, auto;
   }
 
-  ion-navbar {
-    height: 80px;
-
-    .back-button.show-back-button {
-      position: absolute;
-      top: 8px;
-      color: red;
-    }
-
-    .title-ios {
-      height: 50px;
-    }
-
-    .toolbar-background {
-      &.toolbar-background-ios {
-        color: black;
-        background-color: white;
-        background-image: url('../assets/images/border-horizontal-8x7.svg'), url('../assets/images/snow-tile.jpg');
-        background-position: bottom, center;
-        background-repeat: repeat-x, repeat;
-        background-size: auto 34px, auto;
-        border: none;
-        padding-bottom: 34px;
-      }
-    }
-  }
-
-
-
-
   .members-page {
     color: white;
     background: url('../assets/images/editorbg.jpg');
