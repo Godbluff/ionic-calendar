@@ -51,8 +51,7 @@ div.panel-heading {
   box-sizing:border-box;
   min-width:100px;
   padding: 5px 33px;
-  height: 20px;
-  font-family: 'Tangerine';
+  font-family: 'Tangerine', Arial, sans-serif;
   height: 35px;
   font-size: 32px;
   line-height: 26px;
@@ -64,7 +63,7 @@ div.panel-heading {
   border-radius: 15px;
   border: 1px solid #4c0300;
   box-shadow:
-    inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+    inset 1px 1px 0 rgba(255,255,255,0.25), /* highlight */
     inset 0 0 6px #a23227, /* inner glow */
     inset 0 80px 80px -40px #ac3223, /* gradient */
     1px 1px 3px rgba(0,0,0,0.75); /* shadow */
@@ -95,7 +94,7 @@ div.panel-heading {
   background: #a61715;
   text-shadow: 0 1px 2px rgba(0,0,0,0.75), 0 0 40px #FFF;
   box-shadow:
-    inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+    inset 1px 1px 0 rgba(255,255,255,0.25), /* highlight */
     inset 0 0 6px #da3b2c, /* inner glow */
     inset 0 80px 80px -40px #dd4330, /* gradient */
     1px 1px 3px rgba(0,0,0,0.75); /* shadow */
@@ -106,7 +105,7 @@ div.panel-heading {
 }
 .snowbutton:active {
   box-shadow:
-    inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+    inset 1px 1px 0 rgba(255,255,255,0.25), /* highlight */
     inset 0 0 6px #da3b2c, /* inner glow */
     inset 0 80px 80px -40px #dd4330, /* gradient */
     0px 1px 0px rgba(255,255,255,0.25); /* shadow */
@@ -119,21 +118,21 @@ div.panel-heading {
 
 .snowbutton-new{
   background: rgb(47, 94, 13);
-  box-shadow: inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.25), /* highlight */
   inset 0 0 6px #50870d, /* inner glow */
   inset 0 80px 80px -40px #3c9b0d, /* gradient */
   1px 1px 3px rgba(0,0,0,0.75); /* shadow */
 }
 .snowbutton-new:hover{
   background: rgb(72, 115, 13);
-  box-shadow: inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.25), /* highlight */
   inset 0 0 6px #67a50d, /* inner glow */
   inset 0 80px 80px -40px #40a90d, /* gradient */
   1px 1px 3px rgba(0,0,0,0.75); /* shadow */
 }
 .snowbutton-new:active{
   background: rgb(60,141,13);
-  box-shadow: inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.25), /* highlight */
   inset 0 0 6px #71b90d, /* inner glow */
   inset 0 80px 80px -40px #3c9b0d, /* gradient */
   1px 1px 3px rgba(0,0,0,0.75); /* shadow */
@@ -204,7 +203,7 @@ div.panel-heading {
 ion-header{
   ion-navbar {
     height: 85px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 
     .back-button.show-back-button {
       position: absolute;

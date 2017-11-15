@@ -1,4 +1,4 @@
-import {Component, NgZone} from '@angular/core';
+import {Component, NgZone, ElementRef, ViewChild, Renderer2} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {CalendarService} from "../../services/calendar/calendar-service";
 import {LanguageService} from "../../services/language/language-service";
@@ -17,12 +17,17 @@ import {LanguageService} from "../../services/language/language-service";
 })
 export class CalendarPage {
 
+  @ViewChild('calendarZoom') calendarZoom: ElementRef;
+
   isLoading: boolean = true;
+  isZoomed: boolean = false;
+  zoomedDoor: number = null;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public calendarService: CalendarService,
-              private languageService: LanguageService) {
+              private languageService: LanguageService,
+  private renderer: Renderer2) {
 
   }
 
@@ -36,6 +41,26 @@ export class CalendarPage {
 
   toWinnerList() {
     this.navCtrl.push('WinnersPage');
+  }
+
+  handleUserUpdated(door) {
+    console.log(door);
+    // this.isZoomed = !this.isZoomed;
+    // this.zoomedDoor = door.doorIndex;
+    // if(this.isZoomed && door.doorIndex === this.zoomedDoor){
+    //   this.renderer.setStyle(this.calendarZoom.nativeElement, 'transform', `scale(1,1)`);
+    //   this.isZoomed = !this.isZoomed;
+    //   this.zoomedDoor = door.doorIndex;
+    //   return;
+    // }
+    // if(!this.isZoomed){
+    //   this.renderer.setStyle(this.calendarZoom.nativeElement, 'transform', `scale(2,2) translateX(${-door.left + 100}px) translateY(${-door.top +25}px)`);
+    //   this.isZoomed = !this.isZoomed;
+    //   this.zoomedDoor = door.doorIndex;
+    //   return;
+    // }
+
+
   }
 
 }

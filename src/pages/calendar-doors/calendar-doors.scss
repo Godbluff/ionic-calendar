@@ -16,7 +16,6 @@ page-calendar-doors {
       margin-left: 33vw;
       overflow: visible;
       padding-top: 1vw;
-      overflow: visible;
 
       .swiper-container {
         overflow: visible;
@@ -43,7 +42,6 @@ page-calendar-doors {
 
         }
         .swiper-slide-active {
-          border-bottom: 2px solid white;
           background: url('../assets/images/slider-pattern-active-27x15.svg');
           background-size: contain;
           border: none;

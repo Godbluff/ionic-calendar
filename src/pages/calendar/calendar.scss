@@ -52,6 +52,8 @@ page-calendar {
     background-size: cover;
     color: white;
     padding-left: 100px;
+    transform-origin: 0 0;
+    transition: transform 500ms ease;
   }
   @media (max-width: 1920px) {
     .christmasbg {
@@ -114,5 +116,11 @@ page-calendar {
     }
   }
 
+  door{
+    &.visible{
+      opacity: 1;
+      transition: opacity 500ms ease;
+    }
+  }
 
 }

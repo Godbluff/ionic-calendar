@@ -10,6 +10,9 @@ page-calendar-administrate {
 
   .scroll-content{
     padding: 10px 50px 16px 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 
       .item-ios{
         background: transparent;

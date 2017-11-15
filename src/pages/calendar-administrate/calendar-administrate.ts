@@ -17,6 +17,8 @@ import {EditorProvider} from "../../providers/editor/editor";
 })
 export class CalendarAdministratePage {
 
+  login:boolean = true;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public editor: EditorProvider) {
   }
 
@@ -32,6 +34,28 @@ export class CalendarAdministratePage {
     this.editor.editCalendar().subscribe(()=> {
       this.navCtrl.push('CalendarListPage');
     });
+  }
+
+  createCalendar(){
+    if(this.verifyPassword()){
+      this.editor.createNewCalendarAdmin().subscribe(()=>{
+        console.log('Admin created...');
+        this.adminCalendars();
+      });
+    }
+    else{
+      console.log('password mismatch');
+    }
+
+
+  }
+
+  verifyPassword(){
+    return this.editor.calendarCreate.password === this.editor.calendarCreate.passwordVerify;
+  }
+
+  toggleCreate(){
+    this.login = !this.login;
   }
 
 }

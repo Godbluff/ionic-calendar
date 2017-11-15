@@ -10,7 +10,7 @@
 
   <div *ngIf="isLoading">Loading...</div>
 
-  <div *ngIf="!isLoading" class="christmasbg">
+  <div #calendarZoom *ngIf="!isLoading" class="christmasbg">
 
     <!--<div class="calendar-header">Julekalender for {{calendarService.userCalendar.companyName}}</div>-->
     <!--<div class="calendar-border"></div>-->
@@ -19,8 +19,11 @@
     <door *ngFor="let door of calendarService.userCalendar.doorSequence;
     let i = index;"
           [doorNumber]="door"
+          [doorIndex]="i"
+          [invisible]="isZoomed && i != zoomedDoor"
           [containerId]="'number-' + door"
-          [isOpened]="calendarService.userCalendar.doors[i].open">
+          [isOpened]="calendarService.userCalendar.doors[i].open"
+          (userUpdated)="handleUserUpdated($event)">
 
     </door>
 

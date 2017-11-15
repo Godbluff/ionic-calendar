@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, ElementRef} from '@angular/core';
+import {Component, Input, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
 import {CalendarService} from "../../services/calendar/calendar-service";
 import {Headers, Http, Response} from "@angular/http";
 import {ModalService} from "../../services/modal/modal-service";
@@ -19,6 +19,10 @@ export class DoorComponent {
   @Input('doorNumber') doorNumber: number;
   @Input() isOpened: boolean = false;
   @Input() containerId: string;
+  @Input() doorIndex: number;
+  @Input() invisible: boolean;
+
+  @Output() userUpdated = new EventEmitter();
 
   @ViewChild('door') door: ElementRef;
   @ViewChild(Content) content: Content;
@@ -67,6 +71,11 @@ export class DoorComponent {
   }
 
   toggleDoor(): void {
+    this.userUpdated.emit({
+      top: this.door.nativeElement.offsetTop,
+      left: this.door.nativeElement.offsetLeft,
+      doorIndex: this.doorIndex
+      });
       this.loaderVisible = 'block';
       this.calendarService.openDoor(this.doorNumber).subscribe((door: Prize)=>{
         this.doorData = door;
