@@ -7,51 +7,34 @@ page-calendar-members {
     background-position: left, right, center;
     background-repeat: repeat-y, repeat-y, repeat;
     background-size: 40px auto, 40px auto, auto;
-  }
 
-  .members-page {
-    color: white;
-    background: url('../assets/images/editorbg.jpg');
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    .scroll-content{
+      padding: 0 40px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     ion-item {
       background: none;
 
       .item-inner{
         border: none !important;
       }
-      ion-input {
-        &.edit-input {
-          width: 100%;
-          background: rgba(0, 24, 0, 0.7);
-          border: none;
-          color: white;
-          border-radius: 5px;
-          padding: 10px;
-          box-shadow: 1px 1px 1px rgba(196, 255, 196, 0.3), -1px -1px 1px rgba(0, 12, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.5);
-          margin: 5px;
-        }
-        &.edit-input:hover {
-          box-shadow: 1px 1px 1px rgba(196, 255, 196, 0.3), -1px -1px 1px rgba(0, 12, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.5), 0px 0px 10px 5px rgba(196, 255, 196, 0.6);
-        }
-        &.edit-input:focus {
-          box-shadow: 1px 1px 1px rgba(196, 255, 196, 0.3), -1px -1px 1px rgba(0, 12, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.5), 0px 0px 2px 2px rgba(196, 255, 196, 0.6);
-          outline: none;
-          background: rgba(0, 24, 0, 0.8);
-        }
+      ion-input{
+        background: url('../assets/images/single-1x1.svg');
+        background-position: bottom left;
+        background-repeat: repeat-x;
+        background-size: 5px auto;
       }
     }
 
     .participants-container {
       text-align: left;
       border-radius: 5px;
-      padding: 10px 10px 20px 10px;
-      width: 90%;
-      box-shadow: 1px 1px 1px rgba(196, 255, 196, 0.3), -1px -1px 1px rgba(0, 12, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border: 3px solid #dc1413;
       margin: 10px;
-      background: rgba(0, 24, 0, 0.9);
 
       button{
         font-size: 1.5rem;

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
+import {ToastProvider} from "../toast/toast";
 
 
 @Injectable()
@@ -21,33 +22,43 @@ export class EditorProvider {
   };
 
   authToken: string = '';
-
   calendars: any = {};
+  errorMessage: string = '';
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private toast: ToastProvider) {
     console.log('Hello EditorProvider Provider', localStorage.getItem('CCUser'));
   }
 
-  createNewCalendarAdmin(): Observable<void> {
+
+  createNewCalendarAdmin(): Observable<boolean> {
     this.calendars = {};
     let body = {
       companyName: this.calendarCreate.username,
       adminPassword: this.calendarCreate.password
     };
-    let header = new Headers({'Content-Type': 'application/json' });
-    return this.http.post(this.calendarUrl, body, header).map((res: Response)=>{
+    let header = new Headers({'Content-Type': 'application/json'});
+    return this.http.post(this.calendarUrl, body, header).map((res: Response)=> {
       this.calendarAdmin.username = this.calendarCreate.username;
       this.calendarAdmin.password = this.calendarCreate.password;
       this.calendars = res.json();
       this.calendars.password = this.calendarCreate.password;
+      return true;
     })
-      .catch((err: Response)=>{
-        console.log(err)
+      .catch((err: Response)=> {
+        if (err instanceof Response) {
+          err.status === 409 ? this.errorMessage = 'Det finnes allerede en kalender med dette navnet.' : this.errorMessage = err.statusText;
+          this.toast.presentToast(this.errorMessage);
+          return Observable.of(false);
+        }
+        console.log(err);
+        this.toast.presentToast('Noe gikk feil...');
+        return Observable.of(false);
+
       });
   }
 
 
-  editCalendar(): Observable<void> {
+  editCalendar(): Observable<boolean> {
     console.log('getting admin token...');
     let request: string = this.calendarUrl + '/auth?companyName=' + this.calendarAdmin.username + '&password=' + this.calendarAdmin.password;
     let headers = new Headers({
@@ -61,12 +72,20 @@ export class EditorProvider {
         this.checkToken();
         return this.getEditableCalendar().subscribe(()=> {
           console.log('finished it');
+          return true;
         });
       })
-      .catch((error: Response)=> {
-        return Observable.throw(error.json().error || 'Server error');
+      .catch((err: Response)=> {
+        if (err instanceof Response) {
+          err.status === 400 ? this.toast.presentToast('Brukernavn eller passord er feil. Sjekk staving.') : this.errorMessage = err.statusText;
+          return Observable.of(false);
+        }
+        console.log(err);
+        this.toast.presentToast('Noe gikk feil...');
+        return Observable.of(false);
       });
   }
+
 
   checkToken() {
     let retrievedToken = localStorage.getItem('CCAdmin');
@@ -77,56 +96,57 @@ export class EditorProvider {
 
   getEditableCalendar(): Observable<void> {
     console.log('getting calendars...');
-    let headers = new Headers({
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': this.authToken
-    });
-    return this.http.get(this.calendarUrl, {headers: headers})
+    return this.http.get(this.calendarUrl, {headers: this.setHeader()})
       .map((res: Response)=> {
         this.calendars = res.json();
         console.log('Calendar Loaded.', this.calendars);
         return true;
       })
       .catch((error: Response)=> {
-        return Observable.throw(error.json().error || 'Server error');
+        return this.handleError(error);
       });
   }
 
-  insertParticipant(participantName: string) {
-    let token = this.authToken;
-    let body = {"name": participantName};
-    let targetUrl = this.calendarUrl + '/participants';
-    let headers = new Headers({
-      'Content-type': 'application/json',
+
+  insertParticipant(participantName: string): Observable<void> {
+    console.log('adding participant: ', participantName);
+    let body = {
+      name: participantName
+    };
+    let headers =  new Headers({
+      'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': this.authToken
     });
-    this.http.post(targetUrl, body, {headers: headers})
-      .toPromise()
-      .then((Response: any) => {
+    let targetUrl = this.calendarUrl + '/participants/';
+    return this.http.post(targetUrl, body, {headers: headers})
+      .map((res: Response)=> {
+        console.log('added on remote');
         console.log(participantName + ' added.');
-        this.calendars.participants.push(Response.json());
+        this.calendars.participants.push(res.json());
       })
-      .catch((error: any) => console.log(error));
+      .catch((err: Response)=> {
+        if (err instanceof Response) {
+          err.status === 400 ? this.toast.presentToast('Noe gikk feil...') : this.errorMessage = err.statusText;
+          return Observable.of(false);
+        }
+        return this.handleError(err);
+      });
   }
 
 
-  deleteParticipant(userId: string) {
-    let token = localStorage.getItem('CCAdmin');
+  deleteParticipant(userId: string): Observable<void> {
+    console.log('deleting participant: ', userId);
     let targetUrl = this.calendarUrl + '/participants/' + userId;
-    let headers = new Headers({
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': this.authToken
-    });
-    this.http.delete(targetUrl, {headers: headers})
-      .toPromise()
-      .then((Response: any) => {
-        console.log('Deleted Participant? ' + Response.ok)
+    return this.http.delete(targetUrl, {headers: this.setHeader()})
+      .map((res: Response)=> {
+        console.log('Deleted Participant? ' + res.ok)
       })
-      .catch((error: any) => console.log(error));
+      .catch((error: Response)=> {
+        return this.handleError(error);
+      });
   }
+
 
   refreshCalendar(): Observable<void> {
     let retrievedToken = localStorage.getItem('CCAdmin');
@@ -134,34 +154,34 @@ export class EditorProvider {
     return this.getEditableCalendar();
   }
 
-  // updateDoor(door: any): Observable<void>{
-  //   console.log(door);
-  //   let header: any = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': this.authToken});
-  //   let targetUrl = this.calendarUrl + '/doors/' + (door+1);
-  //   let body: any = this.calendars.doors[door];
-  //   this.calendars.doors[door].number === (door+1) ? console.log('Numbers match up.') : console.log('Door Number mismatch');
-  //   return this.http.put(targetUrl, body, {headers: header})
-  //     .toPromise()
-  //     .then((Response: any) => {console.log(Response.status)})
-  //     .catch((error: any) => console.log(error));
-  // }
 
   updateDoorNr(door: number): Observable<void> {
     console.log('updating door: ', door);
-    let header: any = new Headers({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': this.authToken
-    });
     let targetUrl = this.calendarUrl + '/doors/' + (door + 1);
     let body: any = this.calendars.doors[door];
-    return this.http.put(targetUrl, body, {headers: header})
+    return this.http.put(targetUrl, body, {headers: this.setHeader()})
       .map((res: Response)=> {
         console.log('updated door successfully')
       })
       .catch((error: Response)=> {
-        return Observable.throw(error);
+        return this.handleError(error);
       });
+  }
+
+
+  setHeader(){
+    return new Headers({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': this.authToken
+    });
+  }
+
+
+  private handleError(error: Response): Observable<any> {
+    console.error(error);
+    this.toast.presentToast('Noe gikk feil...');
+    return Observable.throw(error.json().error || 'Server error');
   }
 
 }

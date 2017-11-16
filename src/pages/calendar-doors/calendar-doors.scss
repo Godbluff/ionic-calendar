@@ -79,6 +79,10 @@ page-calendar-doors {
         ion-textarea {
           color: black;
           font-size: 1.5rem;
+          background: url('../assets/images/single-1x1.svg');
+          background-position: bottom left;
+          background-repeat: repeat-x;
+          background-size: 5px auto;
         }
 
       }

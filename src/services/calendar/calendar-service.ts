@@ -3,6 +3,7 @@ import {Http, Response, Headers} from "@angular/http";
 import {LanguageService} from "../language/language-service";
 import {ModalService} from "../modal/modal-service";
 import {Observable} from "rxjs";
+import {ToastProvider} from "../../providers/toast/toast";
 
 @Injectable()
 export class CalendarService {
@@ -16,7 +17,7 @@ export class CalendarService {
   errorMessage: string = '';
   todayNumber: number = 0;
 
-  constructor(private http: Http, public languageService: LanguageService, public modalService: ModalService) {
+  constructor(private http: Http, public languageService: LanguageService, public modalService: ModalService, private toast: ToastProvider) {
   }
 
   getCalendar(companyName: string, participantName: string): Observable<boolean> {
@@ -34,10 +35,11 @@ export class CalendarService {
       .catch((error: Response) => {
         console.log('something went wrong on token fetch...');
         if (error instanceof Response) {
-          error.status === 400 ? this.errorMessage = this.languageService.texts.errorMessage[this.languageService.setLanguage] : this.errorMessage = '';
+          error.status === 400 ? this.toast.presentToast(this.languageService.texts.errorMessage[this.languageService.setLanguage]) : this.errorMessage = '';
           this.loaderVisible = 'none';
           return Observable.of(false);
         }
+        this.toast.presentToast('Noe gikk feil...');
         return Observable.of(false);
 
       });
@@ -87,6 +89,7 @@ export class CalendarService {
 
   private handleError(error: Response): Observable<any> {
     console.error(error);
+    this.toast.presentToast('Noe gikk feil...');
     return Observable.throw(error.json().error || 'Server error');
   }
 

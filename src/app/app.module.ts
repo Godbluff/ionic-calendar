@@ -11,6 +11,7 @@ import {HttpModule} from "@angular/http";
 import {ModalService} from "../services/modal/modal-service";
 import {ModalsComponent} from "../components/modals/modals";
 import { EditorProvider } from '../providers/editor/editor';
+import { ToastProvider } from '../providers/toast/toast';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EditorProvider } from '../providers/editor/editor';
     LanguageService,
     ModalService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    EditorProvider
+    EditorProvider,
+    ToastProvider
   ]
 })
 export class AppModule {}

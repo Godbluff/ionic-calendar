@@ -7,26 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>calendar-members</ion-title>
+    <ion-title>Deltakere</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="members-page">
-  <div style="font-size: 18px; margin-top: 20px;">aa</div>
   <ion-item>
-    <ion-input class="edit-input" placeholder="Add participant" [(ngModel)]="newParticipant"
+    <ion-label floating>Legg til deltaker</ion-label>
+    <ion-input [(ngModel)]="newParticipant"
                (keyup.enter)="addParticipant(newParticipant)"></ion-input>
   </ion-item>
-  <div style="color: yellow; font-style: italic; width: 100%; margin-bottom: -5px;
-font-size: 12px;">aa
-  </div>
 
   <ion-list class="participants-container">
+    <p *ngIf="editor.calendars.participants && editor.calendars.participants.length === 0">Kalenderen har ingen deltakere. Skriv inn navn for å legge til noen.</p>
     <button *ngFor="let person of editor.calendars.participants; let i = index" ion-button small>
       {{person.name}}
-      <ion-icon (click)="removeParticipant(i)" name="close" color="danger"></ion-icon>
+      <img (click)="removeParticipant(i)" src="assets/images/cancel-icon-5x5.svg" height="12" style="padding-left: 10px;">
     </button>
 
   </ion-list>

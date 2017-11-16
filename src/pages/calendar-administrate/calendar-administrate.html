@@ -18,11 +18,11 @@
   <ion-list *ngIf="login">
     <ion-item>
       <ion-label floating>Brukernavn</ion-label>
-      <ion-input [(ngModel)]="editor.calendarAdmin.username"></ion-input>
+      <ion-input [(ngModel)]="editor.calendarAdmin.username" (focus)="clearError()"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Passord</ion-label>
-      <ion-input type="password" [(ngModel)]="editor.calendarAdmin.password"></ion-input>
+      <ion-input type="password" [(ngModel)]="editor.calendarAdmin.password" (focus)="clearError()"></ion-input>
     </ion-item>
     <ion-item>
       <button ion-button round  color="danger" (click)="adminCalendars()">Hent kalendere</button>
@@ -32,20 +32,21 @@
   <ion-list *ngIf="!login">
     <ion-item>
       <ion-label floating>Brukernavn</ion-label>
-      <ion-input [(ngModel)]="editor.calendarCreate.username"></ion-input>
+      <ion-input [(ngModel)]="editor.calendarCreate.username" (focus)="clearError()"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Passord</ion-label>
-      <ion-input type="password" [(ngModel)]="editor.calendarCreate.password"></ion-input>
+      <ion-input type="password" [(ngModel)]="editor.calendarCreate.password" (focus)="clearError()"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Gjenta passord</ion-label>
-      <ion-input type="password" [(ngModel)]="editor.calendarCreate.passwordVerify"></ion-input>
+      <ion-input type="password" [(ngModel)]="editor.calendarCreate.passwordVerify" (focus)="clearError()"></ion-input>
     </ion-item>
     <ion-item>
       <button ion-button round  color="danger" (click)="createCalendar()">Opprett konto</button>
     </ion-item>
   </ion-list>
+  <p *ngIf="editor.errorMessage.length > 0">{{editor.errorMessage}}</p>
 
   <img src="assets/images/star-separator-31x11.svg" height="50">
   <ion-list>
