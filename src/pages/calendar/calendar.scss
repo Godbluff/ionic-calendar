@@ -2,6 +2,24 @@ page-calendar {
 
   .scroll-content{
     padding-top: 0 !important;
+    overflow: hidden;
+
+    .bottom-border{
+      background-image: url('../assets/images/border-horizontal-8x7--white.svg'), url('../assets/images/chrismasbg2.jpg');
+      background-position: center 4px, center;
+      background-repeat: repeat-x, repeat;
+      background-size: auto 34px, auto;
+      height: 100px;
+      width: 100%;
+      position: absolute;
+      bottom: -100px;
+      left: 0;
+      transition: transform 500ms ease;
+
+      &.show{
+        transform: translateY(-100px);
+      }
+    }
   }
   .calendar-header {
     width: 100%; height: 50px; line-height: 50px; text-align: center; font-size: 40px; text-shadow: 0 0 4px black;
@@ -46,15 +64,32 @@ page-calendar {
     }
   }
   .christmasbg {
-    width: 100%;
+    width: 200vw;
+    padding: 0 50vw !important;
+    position: absolute;
+    left: -50vw;
     height: 1080px;
     background: url('../assets/images/calendar-bg.jpg') no-repeat;
     background-size: cover;
     color: white;
-    padding-left: 100px;
     transform-origin: 0 0;
     transition: transform 500ms ease;
+
+    &:before{
+      position: absolute;
+      left: 0;
+      content: '';
+      bottom: -19vh;
+      height: 20vh;
+      width: 100%;
+      background-image: url('../assets/images/border-horizontal-8x7--white.svg'), url('../assets/images/chrismasbg2.jpg');
+      background-position: center 4px, center;
+      background-repeat: repeat-x, repeat;
+      background-size: auto 34px, auto;
+    }
   }
+
+
   @media (max-width: 1920px) {
     .christmasbg {
       height: 100vh;

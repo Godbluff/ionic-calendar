@@ -44,21 +44,21 @@ export class CalendarPage {
   }
 
   handleUserUpdated(door) {
-    console.log(door);
+    console.log('clicked : ', door, 'isZoomed? ', this.isZoomed);
     // this.isZoomed = !this.isZoomed;
     // this.zoomedDoor = door.doorIndex;
-    // if(this.isZoomed && door.doorIndex === this.zoomedDoor){
-    //   this.renderer.setStyle(this.calendarZoom.nativeElement, 'transform', `scale(1,1)`);
-    //   this.isZoomed = !this.isZoomed;
-    //   this.zoomedDoor = door.doorIndex;
-    //   return;
-    // }
-    // if(!this.isZoomed){
-    //   this.renderer.setStyle(this.calendarZoom.nativeElement, 'transform', `scale(2,2) translateX(${-door.left + 100}px) translateY(${-door.top +25}px)`);
-    //   this.isZoomed = !this.isZoomed;
-    //   this.zoomedDoor = door.doorIndex;
-    //   return;
-    // }
+    if(this.isZoomed && door.doorIndex === this.zoomedDoor){
+      this.renderer.setStyle(this.calendarZoom.nativeElement, 'transform', `scale(1,1)`);
+      this.isZoomed = !this.isZoomed;
+      this.zoomedDoor = door.doorIndex;
+      return;
+    }
+    if(!this.isZoomed){
+      this.renderer.setStyle(this.calendarZoom.nativeElement, 'transform', `scale(2,2) translateX(${-door.left + 180}px) translateY(${-door.top + 25}px)`);
+      this.isZoomed = !this.isZoomed;
+      this.zoomedDoor = door.doorIndex;
+      return;
+    }
 
 
   }

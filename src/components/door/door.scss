@@ -20,7 +20,7 @@ door {
     transition: opacity 500ms ease 500ms;
 
     &.invisible{
-      opacity: 0.5;
+      opacity: 0;
       pointer-events: none;
       transition: opacity 500ms ease;
     }
@@ -344,8 +344,8 @@ door {
       left: 4px;
     }
     .cardshade-open{
-      -webkit-transform: rotateX(150deg);
-      transform: rotateX(150deg);
+      -webkit-transform: rotateY(-150deg);
+      transform: rotateY(-150deg);
       width: 72px;
     }
     .card {
@@ -355,14 +355,14 @@ door {
       z-index: 1;
     }
     .card-open {
-      -webkit-transform: rotateX(150deg);
-      transform: rotateX(150deg);
+      -webkit-transform: rotateY(-150deg);
+      transform: rotateY(-150deg);
     }
     .front {
       background-size: auto 680px;
     }
     .back p {
-      transform: rotate(180deg);
+      transform: rotate(0deg);
     }
 
   }

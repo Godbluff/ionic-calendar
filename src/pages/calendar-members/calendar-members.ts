@@ -25,7 +25,7 @@ export class CalendarMembersPage {
   addParticipant(inputString: any) {
     let names = inputString.split(/,|;/);
     let duplicateUsers = [];
-    let addUserObservables: Array<Observable> = [];
+    let addUserObservables: Array<Observable<any>> = [];
 
     names.map((name)=> {
       let trimmedName = name.trim();
