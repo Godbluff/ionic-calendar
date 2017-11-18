@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
+import {Component, Input, ViewChild, ElementRef, Output, EventEmitter, Renderer2} from '@angular/core';
 import {CalendarService} from "../../services/calendar/calendar-service";
 import {Headers, Http, Response} from "@angular/http";
 import {ModalService} from "../../services/modal/modal-service";
@@ -21,6 +21,9 @@ export class DoorComponent {
   @Input() containerId: string;
   @Input() doorIndex: number;
   @Input() invisible: boolean;
+  @Input() backgroundWidth: number;
+  @Input() backgroundHeight: number;
+  @Input() doorInit;
 
   @Output() userUpdated = new EventEmitter();
 
@@ -38,6 +41,7 @@ export class DoorComponent {
   cardClass: string = 'card';
   doorOpen: boolean = false;
   bgPos: string = '';
+  backgroundSize: string;
   screenHeight: number = null;
   screenWidth: number = null;
 
@@ -45,7 +49,7 @@ export class DoorComponent {
 
   private loaderVisible: string = 'none';
 
-  constructor(public calendarService: CalendarService, public http: Http, private modalService: ModalService) {
+  constructor(public calendarService: CalendarService, public http: Http, private modalService: ModalService, private renderer: Renderer2) {
     console.log('Hello DoorComponent Component');
     this.text = 'Hello World';
   }
@@ -61,13 +65,20 @@ export class DoorComponent {
   }
 
   ngOnChanges() {
-    console.log('got new inputs', this.loaderVisible);
+    // console.log('got new inputs', this.loaderVisible);
+    // console.log(this.backgroundWidth, this.backgroundHeight);
+    this.renderer.setStyle(this.door.nativeElement, 'height', `${this.doorInit.height}px`);
+    this.renderer.setStyle(this.door.nativeElement, 'width', `${this.doorInit.width}px`);
+    this.adjustDoors();
+    console.log(this.doorInit);
   }
 
   adjustDoors(){
     var top = this.door.nativeElement.offsetTop;
     var left = this.door.nativeElement.offsetLeft;
     this.bgPos = `${-left-1}px ${-top-1}px`;
+    this.backgroundSize = `auto ${this.backgroundHeight}px`;
+    this.renderer.setStyle(this.door.nativeElement, 'backgroundSize', `auto ${this.backgroundHeight}px`);
   }
 
   toggleDoor(): void {

@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar class="white">
-    <ion-title>{{calendarService.userCalendar.companyName}}</ion-title>
+    <ion-title>{{calendarService.userCalendar.companyName}} {{backgroundWidth}}  {{backgroundHeight}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,6 +20,9 @@
     let i = index;"
           [doorNumber]="door"
           [doorIndex]="i"
+          [backgroundWidth]="backgroundWidth"
+          [backgroundHeight]="backgroundHeight"
+          [doorInit]="doorInit"
           [invisible]="isZoomed && i != zoomedDoor"
           [containerId]="'number-' + door"
           [isOpened]="calendarService.userCalendar.doors[i].open"

@@ -12,7 +12,7 @@
   </div>
 
   <div (click)="toggleDoor()"  class="card" [class.card-open]="doorOpen">
-    <div class="face front sparkly" id="front" [style.backgroundPosition]="bgPos">
+    <div class="face front sparkly" id="front" [style.backgroundPosition]="bgPos" [style.backgroundSize]="backgroundSize">
       {{doorNumber}}
       <div class="timer" id="loader-{{doorNumber}}" [style.display]="loaderVisible"></div>
     </div>

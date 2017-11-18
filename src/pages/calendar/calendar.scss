@@ -64,11 +64,11 @@ page-calendar {
     }
   }
   .christmasbg {
-    width: 200vw;
-    padding: 0 50vw !important;
+    width: 160vw;
+    padding: 0 30vw !important;
     position: absolute;
-    left: -50vw;
-    height: 1080px;
+    left: -30vw;
+    height: 100%;
     background: url('../assets/images/calendar-bg.jpg') no-repeat;
     background-size: cover;
     color: white;
@@ -90,66 +90,66 @@ page-calendar {
   }
 
 
-  @media (max-width: 1920px) {
-    .christmasbg {
-      height: 100vh;
-    }
-  }
-
-  @media (max-width: 1280px) {
-    .christmasbg {
-      height: 100vh;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .christmasbg {
-      height: 100vh;
-    }
-  }
-
-  @media screen and (max-width: 935px) {
-    .christmasbg {
-      height: 840px;
-      padding-left: 80px;
-    }
-  }
-
-  @media screen and (max-width: 795px) {
-    .christmasbg {
-      height: 960px;
-      padding-left: 80px;
-    }
-  }
-
-
-  @media screen and (max-width: 740px) {
-    .christmasbg {
-      height: 840px;
-      padding-left: 80px;
-    }
-  }
-
-  @media screen and (max-width: 520px) {
-    .christmasbg {
-      height: 1024px;
-      padding-left: 80px;
-    }
-  }
-
-  @media screen and (max-width: 420px){
-    .christmasbg {
-      height: 680px;
-      padding-left: 10px;
-    }
-  }
-
-  @media screen and (max-width: 369px){
-    .christmasbg {
-      height: 840px;
-      padding-left: 10px;
-    }
-  }
+  //@media (max-width: 1920px) {
+  //  .christmasbg {
+  //    height: 100vh;
+  //  }
+  //}
+  //
+  //@media (max-width: 1280px) {
+  //  .christmasbg {
+  //    height: 100vh;
+  //  }
+  //}
+  //
+  //@media (max-width: 1024px) {
+  //  .christmasbg {
+  //    height: 100vh;
+  //  }
+  //}
+  //
+  //@media screen and (max-width: 935px) {
+  //  .christmasbg {
+  //    height: 840px;
+  //    padding-left: 80px;
+  //  }
+  //}
+  //
+  //@media screen and (max-width: 795px) {
+  //  .christmasbg {
+  //    height: 960px;
+  //    padding-left: 80px;
+  //  }
+  //}
+  //
+  //
+  //@media screen and (max-width: 740px) {
+  //  .christmasbg {
+  //    height: 840px;
+  //    padding-left: 80px;
+  //  }
+  //}
+  //
+  //@media screen and (max-width: 520px) {
+  //  .christmasbg {
+  //    height: 1024px;
+  //    padding-left: 80px;
+  //  }
+  //}
+  //
+  //@media screen and (max-width: 420px){
+  //  .christmasbg {
+  //    height: 680px;
+  //    padding-left: 10px;
+  //  }
+  //}
+  //
+  //@media screen and (max-width: 369px){
+  //  .christmasbg {
+  //    height: 840px;
+  //    padding-left: 10px;
+  //  }
+  //}
 
   door{
     &.visible{
