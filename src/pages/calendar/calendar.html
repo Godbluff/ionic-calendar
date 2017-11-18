@@ -10,7 +10,7 @@
 
   <div *ngIf="isLoading">Loading...</div>
 
-  <div #calendarZoom *ngIf="!isLoading" class="christmasbg">
+  <div #calendarZoom *ngIf="!isLoading" class="christmasbg" [class.zoomed]="isZoomed">
 
     <!--<div class="calendar-header">Julekalender for {{calendarService.userCalendar.companyName}}</div>-->
     <!--<div class="calendar-border"></div>-->

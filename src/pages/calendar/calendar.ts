@@ -39,7 +39,7 @@ export class CalendarPage {
               public navParams: NavParams,
               public calendarService: CalendarService,
               private languageService: LanguageService,
-  private renderer: Renderer2) {
+              private renderer: Renderer2) {
 
   }
 
@@ -51,46 +51,54 @@ export class CalendarPage {
 
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.backgroundHeight = this.content.getContentDimensions().contentHeight;
     this.backgroundWidth = this.content.getContentDimensions().contentWidth;
     let doorCalc = this.calculateDoors();
-    if(doorCalc.requiredHeight > this.backgroundHeight){
-      console.log('not enough height. recalculate');
-      let newRequiredHeight = ((this.backgroundHeight/100)*12.5)* 8;
-      console.log('new required height: ', newRequiredHeight);
-      this.doorInit.height = (this.backgroundHeight/100)*12.5;
-      this.doorInit.width = (this.backgroundHeight/100)*12.5;
-      this.doorInit.marginWidth = (this.backgroundWidth/100)*2;
-      this.doorInit.marginHeight = (this.backgroundWidth/100)*2;
+    console.log('got doorCalc', doorCalc);
+    if (doorCalc.requiredHeight > this.backgroundHeight) {
+      console.log('not enough height. Recalculating');
+      let doorSize = (this.backgroundHeight/100) * 12.5;
+      let heightMargins = (this.backgroundHeight - (doorSize * 6)) - 40;
+      let widthMargins = (this.backgroundWidth - (doorSize * 4));
+      this.doorInit.height = doorSize;
+      this.doorInit.width = doorSize;
+      this.doorInit.marginWidth = widthMargins / 8;
+      this.doorInit.marginHeight = heightMargins / 12;
     }
-    else{
+    else {
       this.doorInit.height = doorCalc.singleDoor;
       this.doorInit.width = doorCalc.singleDoor;
-      this.doorInit.marginWidth = doorCalc.widthMargins;
-      this.doorInit.marginHeight = doorCalc.widthMargins;
+      this.doorInit.marginWidth = doorCalc.widthMargins / 8;
+      this.doorInit.marginHeight = doorCalc.widthMargins / 12;
     }
+    console.log('sending doorinit: ', this.doorInit);
   }
-  ionViewDidEnter(){
+
+  ionViewDidEnter() {
 
   }
 
-  calculateDoors(){
+  calculateDoors() {
+    this.backgroundHeight = this.content.getContentDimensions().contentHeight;
+    this.backgroundWidth = this.content.getContentDimensions().contentWidth;
+
     let calcs = {
-      doorsWidth: 0,
-      widthMargins: 0,
       singleDoor: 0,
+      widthMargins: 0,
       heightMargins: 0,
       requiredHeight: 0
     };
+
     console.log(this.content.getContentDimensions().contentHeight, 'x', this.content.getContentDimensions().contentWidth);
-    calcs.doorsWidth = 4 * this.backgroundWidth;
-    calcs.widthMargins = 5 * ((this.backgroundWidth/100)*2);
-    calcs.singleDoor = (this.backgroundWidth/100)*20;
-    calcs.heightMargins = 8 * ((this.backgroundWidth/100)*2) + 40;
-    calcs.requiredHeight = 6 * calcs.singleDoor + calcs.heightMargins;
-    console.log('Door width: ', calcs.singleDoor, 'calculated margins: ', (this.backgroundWidth/100)*2);
+    calcs.singleDoor = (this.backgroundWidth / 100) * 20;
+    calcs.widthMargins = (this.backgroundWidth - (calcs.singleDoor * 4));
+    calcs.heightMargins = (this.backgroundHeight - (calcs.singleDoor * 6));
+    calcs.requiredHeight = 6 * calcs.singleDoor + calcs.heightMargins -40;
+
+    console.log('Door width: ', calcs.singleDoor, 'calculated margins: ', calcs.heightMargins);
     console.log('requiredHeight: ', calcs.requiredHeight, 'ReportedHeight: ', this.backgroundHeight);
+
     return calcs
   }
 
@@ -102,13 +110,13 @@ export class CalendarPage {
     console.log('clicked : ', door, 'isZoomed? ', this.isZoomed);
     // this.isZoomed = !this.isZoomed;
     // this.zoomedDoor = door.doorIndex;
-    if(this.isZoomed && door.doorIndex === this.zoomedDoor){
+    if (this.isZoomed && door.doorIndex === this.zoomedDoor) {
       this.renderer.setStyle(this.calendarZoom.nativeElement, 'transform', `scale(1,1)`);
       this.isZoomed = !this.isZoomed;
       this.zoomedDoor = door.doorIndex;
       return;
     }
-    if(!this.isZoomed){
+    if (!this.isZoomed) {
       this.renderer.setStyle(this.calendarZoom.nativeElement, 'transform', `scale(2,2) translateX(${-door.left + (0.39 * this.content.getContentDimensions().contentWidth)}px) translateY(${-door.top + 25}px)`);
       this.isZoomed = !this.isZoomed;
       this.zoomedDoor = door.doorIndex;

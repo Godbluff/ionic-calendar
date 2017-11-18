@@ -65,12 +65,11 @@ export class DoorComponent {
   }
 
   ngOnChanges() {
-    // console.log('got new inputs', this.loaderVisible);
     // console.log(this.backgroundWidth, this.backgroundHeight);
     this.renderer.setStyle(this.door.nativeElement, 'height', `${this.doorInit.height}px`);
     this.renderer.setStyle(this.door.nativeElement, 'width', `${this.doorInit.width}px`);
+    this.renderer.setStyle(this.door.nativeElement, 'margin', ` ${this.doorInit.marginHeight}px ${this.doorInit.marginWidth}px`);
     this.adjustDoors();
-    console.log(this.doorInit);
   }
 
   adjustDoors(){
@@ -79,6 +78,7 @@ export class DoorComponent {
     this.bgPos = `${-left-1}px ${-top-1}px`;
     this.backgroundSize = `auto ${this.backgroundHeight}px`;
     this.renderer.setStyle(this.door.nativeElement, 'backgroundSize', `auto ${this.backgroundHeight}px`);
+
   }
 
   toggleDoor(): void {

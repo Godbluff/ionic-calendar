@@ -9,15 +9,15 @@ page-calendar {
       background-position: center 4px, center;
       background-repeat: repeat-x, repeat;
       background-size: auto 34px, auto;
-      height: 100px;
+      height: 50vh;
       width: 100%;
       position: absolute;
-      bottom: -100px;
+      bottom: -50vh;
       left: 0;
       transition: transform 500ms ease;
 
       &.show{
-        transform: translateY(-100px);
+        transform: translateY(-50vh);
       }
     }
   }
@@ -79,13 +79,22 @@ page-calendar {
       position: absolute;
       left: 0;
       content: '';
-      bottom: -19vh;
-      height: 20vh;
+      bottom: -75vh;
+      height: 75vh;
       width: 100%;
       background-image: url('../assets/images/border-horizontal-8x7--white.svg'), url('../assets/images/chrismasbg2.jpg');
       background-position: center 4px, center;
       background-repeat: repeat-x, repeat;
       background-size: auto 34px, auto;
+      transition: transform 500ms ease;
+      transform: scale(1,1);
+    }
+
+    &.zoomed{
+      &:before{
+        transform: scale(0.5,0.5);
+        transform-origin: 50% 0;
+      }
     }
   }
 
