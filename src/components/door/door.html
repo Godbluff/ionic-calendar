@@ -1,11 +1,13 @@
 <div #door class="door-container" [class.invisible]="invisible" onClick="" id="{{containerId}}">
 
-  <div style="cursor: pointer;">
-    <div style="position:absolute; height: 100%; width: 100%; mix-blend-mode: color-dodge;overflow: hidden; cursor: pointer;">
+  <div class="door-content">
+    <div class="coloring-layer">
       <div class="prizelink">Klikk her</div>
       <img class="image" src="assets/images/chocolate.png" (click)="openModal()"/>
     </div>
   </div>
+
+  <div class="timer" id="loader-{{doorNumber}}" [style.display]="loaderVisible"></div>
 
   <div class="cardshade-container">
     <div class="cardshade" [class.cardshade-open]="doorOpen"></div>
@@ -14,7 +16,7 @@
   <div (click)="toggleDoor()"  class="card" [class.card-open]="doorOpen">
     <div class="face front sparkly" id="front" [style.backgroundPosition]="bgPos" [style.backgroundSize]="backgroundSize">
       {{doorNumber}}
-      <div class="timer" id="loader-{{doorNumber}}" [style.display]="loaderVisible"></div>
+
     </div>
     <div class="face back"><p>{{doorQuote}}</p></div>
   </div>

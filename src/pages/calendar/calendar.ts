@@ -61,16 +61,16 @@ export class CalendarPage {
       let doorSize = (this.backgroundHeight/100) * 12.5;
       let heightMargins = (this.backgroundHeight - (doorSize * 6)) - 40;
       let widthMargins = (this.backgroundWidth - (doorSize * 4));
-      this.doorInit.height = doorSize;
-      this.doorInit.width = doorSize;
-      this.doorInit.marginWidth = widthMargins / 8;
-      this.doorInit.marginHeight = heightMargins / 12;
+      this.doorInit.height = Math.floor(doorSize);
+      this.doorInit.width = Math.floor(doorSize);
+      this.doorInit.marginWidth = Math.floor(widthMargins / 8);
+      this.doorInit.marginHeight = Math.floor(heightMargins / 12);
     }
     else {
-      this.doorInit.height = doorCalc.singleDoor;
-      this.doorInit.width = doorCalc.singleDoor;
-      this.doorInit.marginWidth = doorCalc.widthMargins / 8;
-      this.doorInit.marginHeight = doorCalc.widthMargins / 12;
+      this.doorInit.height = Math.floor(doorCalc.singleDoor);
+      this.doorInit.width = Math.floor(doorCalc.singleDoor);
+      this.doorInit.marginWidth = Math.floor(doorCalc.widthMargins / 8);
+      this.doorInit.marginHeight = Math.floor(doorCalc.widthMargins / 12);
     }
     console.log('sending doorinit: ', this.doorInit);
   }

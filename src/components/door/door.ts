@@ -65,7 +65,6 @@ export class DoorComponent {
   }
 
   ngOnChanges() {
-    // console.log(this.backgroundWidth, this.backgroundHeight);
     this.renderer.setStyle(this.door.nativeElement, 'height', `${this.doorInit.height}px`);
     this.renderer.setStyle(this.door.nativeElement, 'width', `${this.doorInit.width}px`);
     this.renderer.setStyle(this.door.nativeElement, 'margin', ` ${this.doorInit.marginHeight}px ${this.doorInit.marginWidth}px`);
@@ -75,7 +74,7 @@ export class DoorComponent {
   adjustDoors(){
     var top = this.door.nativeElement.offsetTop;
     var left = this.door.nativeElement.offsetLeft;
-    this.bgPos = `${-left-1}px ${-top-1}px`;
+    this.bgPos = `${-left}px ${-top}px`;
     this.backgroundSize = `auto ${this.backgroundHeight}px`;
     this.renderer.setStyle(this.door.nativeElement, 'backgroundSize', `auto ${this.backgroundHeight}px`);
 
