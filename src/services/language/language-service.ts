@@ -27,8 +27,8 @@ export class LanguageService {
       gb4: 'We live in exciting times!',
     },
     loginHead: {
-      no: 'Åpne kalender',
-      gb: 'Open Calendar'
+      no: 'Logg inn',
+      gb: 'Log in'
     },
     calName: {
       no: 'Kalendertittel',

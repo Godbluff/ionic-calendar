@@ -1,35 +1,36 @@
 modals {
-  margin: 10vh 10vw;
+  margin: 5vh 5vw;
 
-
-
-
-  .modal-container{
+  .modal-container {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-content: center;
-    max-height: 80vh;
-    width: 80vw;
+    max-height: 90vh;
+    width: 90vw;
     background: url(../assets/images/border-vertical-10x16.svg), url(../assets/images/border-vertical-10x16.svg), url('../assets/images/snow-tile.jpg');;
     background-repeat: repeat-y, repeat-y, repeat;
     background-size: 40px, 40px, auto auto;
     background-position: left, right 76px, center;
     border-radius: 5px;
     padding: 0 36px;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.6), inset 0px 0px 2px white;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6), inset 0px 0px 2px white;
 
-    .modal-header{
-    background: lightgrey;
-    font-size: 2rem;
-    margin: 0;
-    padding: 10px 0;
-  }
+    .modal-header {
+      font-family: 'Berkshire Swash', Arial, sans-serif;
+      background: url(../assets/images/border-horizontal-5x3_2.svg);
+      background-repeat: repeat-x;
+      background-size: 20px;
+      background-position: center bottom;
+      font-size: 2.5rem;
+      margin: 0;
+      padding: 10px 0 20px;
+    }
 
-    .modal-content-container{
-      margin: 0 2rem 2rem;
+    .modal-content-container {
+      margin: 0 1rem 1rem;
 
-      .border-above{
+      .border-above {
         background: url(../assets/images/border-horizontal-8x3.svg);
         background-repeat: repeat-x;
         background-size: 32px;
@@ -37,12 +38,44 @@ modals {
         width: 100%;
       }
 
-      .border-below{
-
+      .top-header{
+        font-weight: bold;
       }
 
-    }
+      .prize-img {
+        position: relative;
+        width: fit-content;
+        margin: 5px auto;
+        img {
+          border: 3px solid #cd1314;
+          border-radius: 1rem;
+          transition: transform 250ms ease;
+          &.scaled {
+            transform: scale(1.5);
+          }
+        }
 
+        //&:after{
+        //  content: '';
+        //  position: absolute;
+        //  top: -16px;
+        //  left: 0;
+        //  height: calc(100% + 24px);
+        //  width: 100%;
+        //  background: url('../assets/images/border-omni-5x5.svg'), url('../assets/images/border-omni-5x5.svg'), url('../assets/images/border-omni-5x5.svg'), url('../assets/images/border-omni-5x5.svg');
+        //  background-repeat: repeat-x, repeat-x;
+        //  background-size: 15px, 15px;
+        //  background-position: top, bottom;
+        //
+        //}
+      }
+
+
+
+    }
+    .snowbutton {
+      margin-top: 0px;
+    }
   }
 
 }

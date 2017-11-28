@@ -6,13 +6,16 @@
   <div class="modal-content-container">
     <p class="top-header">{{outcomeText}}</p>
     <p class="sub-header">Dagens premie {{win ? 'er:' : 'var:'}}</p>
-    <div class="border-above"></div>
-    <img src="{{prizeData.imageUrl}}" style="max-height: 150px; object-fit: scale-down;"/>
-    <div class="border-above"></div>
+    <!--<div class="border-above"></div>-->
+    <div class="prize-img">
+      <img src="{{prizeData.imageUrl}}" [class.scaled]="scaledPrize" style="max-height: 150px; object-fit: scale-down;" (tap)="togglePrizeScaling()"/>
+    </div>
+
+    <!--<div class="border-above"></div>-->
     <p>{{prizeData.prize}}</p>
     <p>{{prizeData.instructions}}</p>
   </div>
 
-  <button (click)="closeModal()" style="height: 40px; line-height: 40px; font-size: 2rem;">Lukk</button>
+  <div class="snowbutton" (click)="closeModal()">Lukk</div>
 
 </div>

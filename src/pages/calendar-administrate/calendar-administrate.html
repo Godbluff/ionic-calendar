@@ -14,46 +14,48 @@
 
 
 <ion-content class="admin-login">
+  <div *ngIf="login" class="input-container">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Brukernavn</ion-label>
+        <ion-input [(ngModel)]="editor.calendarAdmin.username" (focus)="clearError()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Passord</ion-label>
+        <ion-input type="password" [(ngModel)]="editor.calendarAdmin.password" (focus)="clearError()"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="snowbutton" (click)="adminCalendars()">
+      Hent kalender
+    </div>
+  </div>
 
-  <ion-list *ngIf="login">
-    <ion-item>
-      <ion-label floating>Brukernavn</ion-label>
-      <ion-input [(ngModel)]="editor.calendarAdmin.username" (focus)="clearError()"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Passord</ion-label>
-      <ion-input type="password" [(ngModel)]="editor.calendarAdmin.password" (focus)="clearError()"></ion-input>
-    </ion-item>
-    <ion-item>
-      <button ion-button round  color="danger" (click)="adminCalendars()">Hent kalendere</button>
-    </ion-item>
-  </ion-list>
-
-  <ion-list *ngIf="!login">
-    <ion-item>
-      <ion-label floating>Brukernavn</ion-label>
-      <ion-input [(ngModel)]="editor.calendarCreate.username" (focus)="clearError()"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Passord</ion-label>
-      <ion-input type="password" [(ngModel)]="editor.calendarCreate.password" (focus)="clearError()"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Gjenta passord</ion-label>
-      <ion-input type="password" [(ngModel)]="editor.calendarCreate.passwordVerify" (focus)="clearError()"></ion-input>
-    </ion-item>
-    <ion-item>
-      <button ion-button round  color="danger" (click)="createCalendar()">Opprett konto</button>
-    </ion-item>
-  </ion-list>
-  <p *ngIf="editor.errorMessage.length > 0">{{editor.errorMessage}}</p>
+  <div *ngIf="!login" class="input-container">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Brukernavn</ion-label>
+        <ion-input [(ngModel)]="editor.calendarCreate.username" (focus)="clearError()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Passord</ion-label>
+        <ion-input type="password" [(ngModel)]="editor.calendarCreate.password" (focus)="clearError()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Gjenta passord</ion-label>
+        <ion-input type="password" [(ngModel)]="editor.calendarCreate.passwordVerify"
+                   (focus)="clearError()"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="snowbutton" (click)="createCalendar()">
+      Opprett kalender
+    </div>
+  </div>
+  <div class="timer" [class.visible]="isLoading"></div>
 
   <img src="assets/images/star-separator-31x11.svg" height="50">
-  <ion-list>
-    <ion-item>
-      <button  ion-button round color="danger" (tap)="toggleCreate()">{{login ? 'Opprett ny administratorkonto' : 'Log in eksisterende administrator'}}</button>
-    </ion-item>
-  </ion-list>
+  <div class="snowbutton" (tap)="toggleCreate()">
+    {{login ? 'Lag ny konto' : 'Logg inn'}}
+  </div>
 
 
 </ion-content>

@@ -16,6 +16,7 @@ export class ModalsComponent {
   text: string;
   prizeData: any = {};
   outcomeText: string = '';
+  scaledPrize: boolean = false;
 
   constructor(public viewCtrl: ViewController, public navParams: NavParams) {
     console.log('Hello ModalsComponent Component');
@@ -30,6 +31,10 @@ export class ModalsComponent {
 
   closeModal() {
     this.viewCtrl.dismiss();
+  }
+
+  togglePrizeScaling(){
+    this.scaledPrize = !this.scaledPrize;
   }
 
 }

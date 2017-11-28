@@ -5,20 +5,33 @@ page-calendar {
     overflow: hidden;
 
     .bottom-border{
-      background-image: url('../assets/images/border-horizontal-8x7--white.svg'), url('../assets/images/chrismasbg2.jpg');
-      background-position: center 4px, center;
-      background-repeat: repeat-x, repeat;
-      background-size: auto 34px, auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-image: url('../assets/images/border-horizontal-8x7--white.svg'),  url('../assets/images/border-horizontal-8x7--white.svg'), url('../assets/images/chrismasbg2.jpg');
+      background-position: center 4px, center calc(100% - 4px), center;
+      background-repeat: repeat-x, repeat-x, repeat;
+      background-size: auto 34px, auto 34px, auto;
       height: 50vh;
       width: 100%;
       position: absolute;
       bottom: -50vh;
       left: 0;
       transition: transform 500ms ease;
+      padding: 50px 10vw;
+      text-align: center;
 
       &.show{
         transform: translateY(-50vh);
       }
+
+      p{
+        color: yellow;
+        font-style: italic;
+        text-shadow: 1px 1px 0 black;
+      }
+
     }
   }
   .calendar-header {

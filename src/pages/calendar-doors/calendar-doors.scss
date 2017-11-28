@@ -61,6 +61,10 @@ page-calendar-doors {
       .scroll-content {
         padding: 10px 50px 16px 50px;
 
+        .item-ios {
+          background: transparent;
+        }
+
         .list-ios .item-block .item-inner {
           border: none;
 
@@ -83,6 +87,28 @@ page-calendar-doors {
           background-position: bottom left;
           background-repeat: repeat-x;
           background-size: 5px auto;
+        }
+
+        .timer {
+          display: none;
+          position: relative;
+          margin: 0 auto 10px;
+          bottom: auto;
+          right: auto;
+          width: 36px;
+          height: 36px;
+          background-color: transparent;
+          box-shadow: inset 0 0 0 2px #000;
+          border-radius: 50%;
+
+          &.visible {
+            display: block;
+          }
+        }
+
+        .snowbutton{
+          display: block;
+          margin: 10px auto;
         }
 
       }

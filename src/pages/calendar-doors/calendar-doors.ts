@@ -27,6 +27,9 @@ export class CalendarDoorsPage {
   highlightStatus: Array<boolean> = [false];
   activeDoor: EditableDoor = new EditableDoor();
   isLoading = true;
+  isUpdating = false;
+  urlText: string = '';
+  urlInput = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public editor: EditorProvider, public camera: Camera) {
   }
@@ -49,7 +52,7 @@ export class CalendarDoorsPage {
   }
 
   blurFunction() {
-    console.log('blurred');
+    this.editor.calendars.doors[this.currentDoor()].imageUrl = this.urlText;
   }
 
   getCameraImage() {
@@ -79,8 +82,14 @@ export class CalendarDoorsPage {
     });
   }
 
+  setImageUrl(){
+    this.urlInput = !this.urlInput;
+  }
+
   updateDoor(doorNr) {
+    this.isUpdating = true;
     this.editor.updateDoorNr(doorNr).subscribe(()=>{
+      this.isUpdating = false;
       console.log('Updated door')
     });
   }

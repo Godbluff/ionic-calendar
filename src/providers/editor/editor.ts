@@ -47,6 +47,7 @@ export class EditorProvider {
       .catch((err: Response)=> {
         if (err instanceof Response) {
           err.status === 409 ? this.errorMessage = 'Det finnes allerede en kalender med dette navnet.' : this.errorMessage = err.statusText;
+          err.status === 422 ? this.errorMessage = 'Brukernavn eller passord er for kort.': '';
           this.toast.presentToast(this.errorMessage);
           return Observable.of(false);
         }

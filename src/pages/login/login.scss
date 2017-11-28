@@ -1,3 +1,12 @@
+ion-header {
+  .title {
+    &.title-ios, &.title-md{
+      padding: 0;
+    }
+
+  }
+}
+
 ion-content {
   &.frontbg {
     transform: translateZ(0);
@@ -69,12 +78,12 @@ ion-content {
   }
 
   h3{
-    font-family: 'Tangerine', Arial, sans-serif;
+    font-family: 'Berkshire Swash', Arial, sans-serif;
     text-shadow: -2px -2px 0px white, 1px 1px 0px rgba(0,0,0,0.1);
-    font-size: 48px;
+    font-size: 3Frem;
     margin-bottom:5px;
     color: black;
-    font-weight: bold;
+    font-weight: normal;
   }
   .link a {
     color: white;
@@ -322,9 +331,6 @@ ion-content {
     .button-container{
       width: 90%;
       margin-left: 5%;
-    }
-    h3{
-      font-size: 36px;
     }
     .flag-container{
       top: 50px;

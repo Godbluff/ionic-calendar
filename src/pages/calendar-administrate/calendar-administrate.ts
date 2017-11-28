@@ -18,6 +18,7 @@ import {EditorProvider} from "../../providers/editor/editor";
 export class CalendarAdministratePage {
 
   login: boolean = true;
+  isLoading = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public editor: EditorProvider) {
   }
@@ -31,11 +32,14 @@ export class CalendarAdministratePage {
   }
 
   adminCalendars() {
+    this.isLoading = true;
     this.editor.editCalendar().subscribe((res)=> {
       if(res){
+        this.isLoading = false;
         this.navCtrl.push('CalendarListPage');
       }
       else {
+        this.isLoading = false;
         console.log('login failed...');
       }
     });
@@ -43,10 +47,15 @@ export class CalendarAdministratePage {
 
   createCalendar() {
     if (this.verifyPassword()) {
+      this.isLoading = true;
       this.editor.createNewCalendarAdmin().subscribe((res)=> {
         if (res) {
+          this.isLoading = false;
           console.log('Admin created...');
           this.adminCalendars();
+        }
+        else{
+          this.isLoading = false;
         }
       });
     }
